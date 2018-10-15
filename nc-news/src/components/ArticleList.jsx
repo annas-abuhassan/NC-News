@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ArticleCard from "./ArticleCard";
+import * as api from "../api.js";
 
 class ArticleList extends Component {
   state = {
@@ -6,11 +8,21 @@ class ArticleList extends Component {
   };
   render() {
     return (
-      <div>
-        <h1>Here the articles will be</h1>
-      </div>
+      <>
+        {this.state.articles.map(article => {
+          return <ArticleCard key={article._id} article={article} />;
+        })}
+      </>
     );
   }
+
+  componentDidMount = () => {
+    api.getArticles().then(articles =>
+      this.setState({
+        articles
+      })
+    );
+  };
 }
 
 export default ArticleList;

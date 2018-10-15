@@ -1,0 +1,7 @@
+.article-card-container {
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+.article-card-container header {
+  border: 2px solid rgba(255, 255, 255, 1);
+}
+

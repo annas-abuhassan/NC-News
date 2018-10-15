@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Router } from "@reach/router";
+import { Link } from "@reach/router";
 import ArticleList from "./ArticleList";
 import "./Home.css";
 
