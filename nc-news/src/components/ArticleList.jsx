@@ -9,6 +9,8 @@ class ArticleList extends Component {
   render() {
     return (
       <>
+        <label>Article Filter: </label>
+        <input />
         {this.state.articles.map(article => {
           return <ArticleCard key={article._id} article={article} />;
         })}
@@ -16,12 +18,38 @@ class ArticleList extends Component {
     );
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps !== this.props) {
+      if (!this.props.id)
+        api.getArticles().then(articles =>
+          this.setState({
+            articles
+          })
+        );
+      else {
+        api.getArticlesByTopic(this.props.id).then(articles =>
+          this.setState({
+            articles
+          })
+        );
+      }
+    }
+  };
+
   componentDidMount = () => {
-    api.getArticles().then(articles =>
-      this.setState({
-        articles
-      })
-    );
+    if (!this.props.id)
+      api.getArticles().then(articles =>
+        this.setState({
+          articles
+        })
+      );
+    else {
+      api.getArticlesByTopic(this.props.id).then(articles =>
+        this.setState({
+          articles
+        })
+      );
+    }
   };
 }
 

@@ -1,7 +1,31 @@
 .article-card-container {
   border: 2px solid rgba(0, 0, 0, 1);
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-areas:
+    "votes header user"
+    ". . user"
+    ". . time"
+    ". . topic";
 }
-.article-card-container header {
+.article-card-container h1 {
   border: 2px solid rgba(255, 255, 255, 1);
+  grid-area: header;
 }
-
+.article-card-votes {
+  border: 2px solid rgb(252, 214, 0);
+  grid-area: votes;
+}
+.article-card-user {
+  border: 2px solid rgb(5, 99, 250);
+  grid-area: user;
+}
+.article-card-time {
+  border: 2px solid rgb(5, 99, 250);
+  grid-area: time;
+}
+.article-card-topic {
+  border: 2px solid rgb(5, 99, 250);
+  grid-area: topic;
+}
