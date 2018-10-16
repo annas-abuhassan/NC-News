@@ -4,54 +4,36 @@ import * as api from "../api.js";
 
 class Vote extends Component {
   state = {
-    votes: 0,
-    _id: "",
-    type: "",
-    up: false,
-    down: false
+    voteModifier: 0
   };
 
   render() {
+    const { votes, _id, type, className } = this.props;
+    const { voteModifier } = this.state;
     return (
-      <span className="article-card-votes">
-        <button disabled={this.state.up} onClick={() => this.handleVote("up")}>
+      <span className={className}>
+        <button
+          disabled={voteModifier === 1}
+          onClick={() => this.handleVote("up", _id, type)}
+        >
           Vote Up
         </button>
         <button
-          disabled={this.state.down}
-          onClick={() => this.handleVote("down")}
+          disabled={voteModifier === -1}
+          onClick={() => this.handleVote("down", _id, type)}
         >
           Vote Down
         </button>
-        Votes: {this.state.votes}
+        Votes: {votes + voteModifier}
       </span>
     );
   }
 
-  handleVote = updown => {
-    api.makeVote(updown, this.state._id, this.state.type).then(data => {
-      if (this.state.up === true || this.state.down === true)
-        this.setState({
-          votes: data.votes,
-          up: false,
-          down: false
-        });
-      else
-        this.setState({
-          votes: data.votes,
-          up: updown === "up" ? true : false,
-          down: updown === "down" ? true : false
-        });
-    });
-  };
-
-  componentDidMount = () => {
-    const { votes, _id, type } = this.props;
-    this.setState({
-      votes: votes,
-      _id: _id,
-      type: type
-    });
+  handleVote = (updown, _id, type) => {
+    api.makeVote(updown, _id, type);
+    this.setState(state => ({
+      voteModifier: updown === "up" ? 1 : -1
+    }));
   };
 }
 
