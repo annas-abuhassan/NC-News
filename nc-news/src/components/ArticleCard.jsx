@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
 import PropTypes from "prop-types";
 import Vote from "./Vote";
 import "./ArticleCard.css";
@@ -17,16 +18,24 @@ class ArticleCard extends Component {
       created_at,
       _id
     } = this.props.article;
-
     return (
       <div className="article-card-container">
-        <h1>{title}</h1>
-        <Vote votes={votes} _id={_id} type={"article"} />
+        <Link to={`/articles/${_id}`} key={_id}>
+          <h1>{title}</h1>
+        </Link>
+        <Vote
+          className={"article-card-votes"}
+          votes={votes}
+          _id={_id}
+          type={"article"}
+        />
         <span className="article-card-user">
           Submitted By: {created_by.username}
         </span>
         <span className="article-card-time">At: {created_at}</span>
-        <span className="article-card-topic">Topic: {belongs_to}</span>
+        <span className="article-card-topic">
+          Topic: <Link to={`/topics/${belongs_to}`}>{belongs_to}</Link>
+        </span>
       </div>
     );
   }
@@ -34,12 +43,12 @@ class ArticleCard extends Component {
 
 ArticleCard.propTypes = {
   article: PropTypes.object.isRequired,
-  votes: PropTypes.objectOf(PropTypes.number),
-  title: PropTypes.objectOf(PropTypes.string),
-  created_by: PropTypes.objectOf(PropTypes.string),
-  belongs_to: PropTypes.objectOf(PropTypes.string),
-  created_at: PropTypes.objectOf(PropTypes.string)
-  // _id: PropTypes.objectOf(PropTypes.string).isRequired
+  votes: PropTypes.objectOf(PropTypes.number.isRequired),
+  title: PropTypes.objectOf(PropTypes.string.isRequired),
+  created_by: PropTypes.objectOf(PropTypes.string.isRequired),
+  belongs_to: PropTypes.objectOf(PropTypes.string.isRequired),
+  created_at: PropTypes.objectOf(PropTypes.string.isRequired),
+  _id: PropTypes.objectOf(PropTypes.string.isRequired)
 };
 
 export default ArticleCard;

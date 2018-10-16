@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Router } from "@reach/router";
 import ArticleList from "./ArticleList";
+import Article from "./Article";
 import * as api from "../api.js";
 import "./Home.css";
 
@@ -26,7 +27,8 @@ class Home extends Component {
         <main>
           <Router>
             <ArticleList path="/" />
-            <ArticleList path="/topics/:id" />
+            <ArticleList path="/topics/:topic" />
+            <Article path="/articles/:id" />
           </Router>
         </main>
         <footer>Created as part of FE-2 NC-News sprint.</footer>

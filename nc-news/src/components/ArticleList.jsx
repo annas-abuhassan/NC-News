@@ -8,11 +8,10 @@ class ArticleList extends Component {
   };
 
   render() {
+    const { articles } = this.state;
     return (
       <>
-        <label>Article Filter: </label>
-        <input />
-        {this.state.articles.map(article => {
+        {articles.map(article => {
           return <ArticleCard key={article._id} article={article} />;
         })}
       </>
@@ -30,19 +29,11 @@ class ArticleList extends Component {
   };
 
   fetchArticles = () => {
-    if (!this.props.id)
-      api.getArticles().then(articles =>
-        this.setState({
-          articles
-        })
-      );
-    else {
-      api.getArticlesByTopic(this.props.id).then(articles =>
-        this.setState({
-          articles
-        })
-      );
-    }
+    api.getArticles(this.props.topic).then(articles =>
+      this.setState({
+        articles
+      })
+    );
   };
 }
 

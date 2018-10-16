@@ -1,14 +1,22 @@
 import axios from "axios";
 const API_URL = "https://nc-news-aah.herokuapp.com/api";
 
-export const getArticles = () => {
-  return axios.get(`${API_URL}/articles`).then(({ data }) => data.articles);
+export const getArticles = topic => {
+  const url = topic
+    ? `${API_URL}/topics/${topic}/articles`
+    : `${API_URL}/articles`;
+  return axios.get(url).then(({ data }) => data.articles);
 };
 
-export const getArticlesByTopic = topic => {
+export const getArticleCommentsById = id => {
   return axios
-    .get(`${API_URL}/topics/${topic}/articles`)
-    .then(({ data }) => data.articles);
+    .get(`${API_URL}/articles/${id}/comments`)
+    .then(({ data }) => data.comments);
+};
+export const getArticleById = id => {
+  return axios
+    .get(`${API_URL}/articles/${id}`)
+    .then(({ data }) => data.article);
 };
 
 export const getTopics = () => {
