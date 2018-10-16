@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./ArticleCard.css";
 import PropTypes from "prop-types";
+import Vote from "./Vote";
+import "./ArticleCard.css";
 
 class ArticleCard extends Component {
   state = {
@@ -13,12 +14,14 @@ class ArticleCard extends Component {
       votes,
       created_by,
       belongs_to,
-      created_at
+      created_at,
+      _id
     } = this.props.article;
+
     return (
       <div className="article-card-container">
         <h1>{title}</h1>
-        <span className="article-card-votes">Votes: {votes}</span>
+        <Vote votes={votes} _id={_id} type={"article"} />
         <span className="article-card-user">
           Submitted By: {created_by.username}
         </span>
@@ -29,6 +32,14 @@ class ArticleCard extends Component {
   }
 }
 
-ArticleCard.propTypes = {};
+ArticleCard.propTypes = {
+  article: PropTypes.object.isRequired,
+  votes: PropTypes.objectOf(PropTypes.number),
+  title: PropTypes.objectOf(PropTypes.string),
+  created_by: PropTypes.objectOf(PropTypes.string),
+  belongs_to: PropTypes.objectOf(PropTypes.string),
+  created_at: PropTypes.objectOf(PropTypes.string)
+  // _id: PropTypes.objectOf(PropTypes.string).isRequired
+};
 
 export default ArticleCard;

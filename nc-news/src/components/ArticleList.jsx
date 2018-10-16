@@ -6,6 +6,7 @@ class ArticleList extends Component {
   state = {
     articles: []
   };
+
   render() {
     return (
       <>
@@ -18,25 +19,17 @@ class ArticleList extends Component {
     );
   }
 
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = prevProps => {
     if (prevProps !== this.props) {
-      if (!this.props.id)
-        api.getArticles().then(articles =>
-          this.setState({
-            articles
-          })
-        );
-      else {
-        api.getArticlesByTopic(this.props.id).then(articles =>
-          this.setState({
-            articles
-          })
-        );
-      }
+      this.fetchArticles();
     }
   };
 
   componentDidMount = () => {
+    this.fetchArticles();
+  };
+
+  fetchArticles = () => {
     if (!this.props.id)
       api.getArticles().then(articles =>
         this.setState({

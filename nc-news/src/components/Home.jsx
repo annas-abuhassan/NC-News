@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Router } from "@reach/router";
 import ArticleList from "./ArticleList";
+import * as api from "../api.js";
 import "./Home.css";
 
 class Home extends Component {
@@ -14,9 +15,13 @@ class Home extends Component {
         <header>NC News!</header>
         <nav>
           <Link to="/">Home</Link>
-          <Link to="/topics/coding">Coding</Link>
-          <Link to="/topics/cooking">Cooking</Link>
-          <Link to="/topics/football">Football</Link>
+          {this.state.topics.map(({ slug, title, _id }) => {
+            return (
+              <Link key={_id} to={`/topics/${slug}`}>
+                {title}
+              </Link>
+            );
+          })}
         </nav>
         <main>
           <Router>
@@ -28,6 +33,14 @@ class Home extends Component {
       </div>
     );
   }
+
+  componentDidMount = () => {
+    api.getTopics().then(topics =>
+      this.setState({
+        topics
+      })
+    );
+  };
 }
 
 export default Home;
