@@ -1,0 +1,29 @@
+.comment-list-container {
+  border: 2px solid pink;
+}
+.comment-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas:
+    "details body"
+    "votes .";
+
+  border: 2px solid black;
+}
+
+.comment-details {
+  border: 2px solid grey;
+  grid-area: details;
+}
+
+.comment-body {
+  border: 2px solid green;
+  grid-area: body;
+}
+
+.comment-votes {
+  color: purple;
+  border: 2px solid purple;
+  grid-area: votes;
+}
