@@ -7,15 +7,23 @@ class CommentAdder extends Component {
   };
 
   render() {
-    const { className } = this.props;
+    const {
+      className,
+      user: { username }
+    } = this.props;
+
+    const { handleSubmit, handleChange } = this;
+    const { body } = this.state;
+
     return (
-      <form onSubmit={this.handleSubmit} className={className}>
-        <label className="comment-adder-label">Comment as: USER</label>
+      <form onSubmit={handleSubmit} className={className}>
+        <label className="comment-adder-label">Comment as: {username}</label>
         <div className="comment-adder-body-container">
           <input
-            onChange={this.handleChange}
+            onChange={handleChange}
             className="comment-adder-body-field"
-            value={this.state.body}
+            value={body}
+            placeholder="Add a comment..."
           />
           <button className="comment-adder-submit-button">Comment!</button>
         </div>

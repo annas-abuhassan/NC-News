@@ -38,19 +38,22 @@ class Comments extends Component {
                 type={"comment"}
               />
               {user.username === username ? (
-                <button onClick={() => this.deleteComment(_id)}>
-                  New Delete Button
-                </button>
+                <button onClick={() => this.deleteComment(_id)}>Delete!</button>
               ) : (
                 <></>
               )}
             </div>
           );
         })}
-        <CommentAdder
-          addComment={this.addComment}
-          className="comment-adder-container"
-        />
+        {user.username ? (
+          <CommentAdder
+            addComment={this.addComment}
+            className="comment-adder-container"
+            user={user}
+          />
+        ) : (
+          <></>
+        )}
       </div>
     );
   }

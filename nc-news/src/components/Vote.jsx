@@ -10,17 +10,19 @@ class Vote extends Component {
   render() {
     const { votes, _id, type, className } = this.props;
     const { voteModifier } = this.state;
+    const { handleVote } = this;
+
     return (
       <span className={className}>
         <button
           disabled={voteModifier === 1}
-          onClick={() => this.handleVote("up", _id, type)}
+          onClick={() => handleVote("up", _id, type)}
         >
           Vote Up
         </button>
         <button
           disabled={voteModifier === -1}
-          onClick={() => this.handleVote("down", _id, type)}
+          onClick={() => handleVote("down", _id, type)}
         >
           Vote Down
         </button>

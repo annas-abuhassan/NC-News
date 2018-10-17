@@ -7,9 +7,11 @@ class Login extends Component {
   };
 
   render() {
+    const { handleSubmit, handleChange } = this;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} type="text" />
+      <form onSubmit={handleSubmit}>
+        <label>Username:</label>
+        <input label="login" onChange={handleChange} type="text" />
         <button>Login!</button>
       </form>
     );

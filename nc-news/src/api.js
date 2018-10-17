@@ -42,7 +42,11 @@ export const getUser = username => {
 };
 
 export const deleteComment = id => {
+  return axios.delete(`${API_URL}/comments/${id}`);
+};
+
+export const addArticle = (articleObj, topic) => {
   return axios
-    .delete(`${API_URL}/comments/${id}`)
-    .then(({ data }) => console.log(data.comment));
+    .post(`${API_URL}/topics/${topic}/articles`, articleObj)
+    .then(({ data }) => console.log(data));
 };

@@ -11,11 +11,11 @@ class ArticleList extends Component {
   render() {
     const { articles } = this.state;
     return (
-      <>
+      <div className="article-list-container">
         {articles.map(article => {
           return <ArticleCard key={article._id} article={article} />;
         })}
-      </>
+      </div>
     );
   }
 

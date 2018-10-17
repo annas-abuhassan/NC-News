@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Router } from "@reach/router";
+import ArticleAdder from "./ArticleAdder";
 import ArticleList from "./ArticleList";
 import Article from "./Article";
 import Login from "./Login";
@@ -14,22 +15,32 @@ class Home extends Component {
   };
 
   render() {
-    const { user } = this.state;
+    const { user, topics } = this.state;
+    const { userLogin, userLogout } = this;
     return (
       <div className="container">
         <header>NC News!</header>
-        <nav>
+        <nav className="nav-container">
           <Link className="nav-link" to="/">
             Home
           </Link>
-          {this.state.topics.map(({ slug, title, _id }) => {
+          {topics.map(({ slug, title, _id }) => {
             return (
               <Link className="nav-link" key={_id} to={`/topics/${slug}`}>
                 {title}
               </Link>
             );
           })}
-          {!user.username ? <Login userLogin={this.userLogin} /> : <Logout />}
+          {!user.username ? (
+            <Login className="nav-login" userLogin={userLogin} />
+          ) : (
+            <Logout
+              className="nav-logout"
+              user={user}
+              userLogout={userLogout}
+            />
+          )}
+          {user.username ? <ArticleAdder user={user} /> : <div />}
         </nav>
         <main>
           <Router>
@@ -54,6 +65,12 @@ class Home extends Component {
   userLogin = user => {
     this.setState({
       user
+    });
+  };
+
+  userLogout = () => {
+    this.setState({
+      user: {}
     });
   };
 }

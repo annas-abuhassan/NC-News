@@ -22,7 +22,6 @@ class Article extends Component {
       }
     } = this.state;
     const { id, user } = this.props;
-    console.log(this.props);
     return (
       <div className="article-main-container">
         {created_by ? (
@@ -56,7 +55,7 @@ class Article extends Component {
 }
 
 Article.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   user: PropTypes.object.isRequired
 };
 

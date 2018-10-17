@@ -2,8 +2,22 @@ import React, { Component } from "react";
 
 class Logout extends Component {
   render() {
-    return <div>Logged in as BLAH BLAH</div>;
+    const { user, userLogout } = this.props;
+    return (
+      <div>
+        Logged in as {user.username}
+        <button
+          onClick={() => {
+            userLogout();
+          }}
+        >
+          Logout!
+        </button>
+      </div>
+    );
   }
 }
+
+
 
 export default Logout;
