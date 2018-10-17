@@ -2,13 +2,12 @@
   border: 2px solid pink;
 }
 .comment-container {
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 1fr 2fr;
   grid-template-areas:
     "details body"
     "votes .";
-
   border: 2px solid black;
 }
 
@@ -18,6 +17,7 @@
 }
 
 .comment-body {
+  height: 100%;
   border: 2px solid green;
   grid-area: body;
 }
@@ -26,4 +26,8 @@
   color: purple;
   border: 2px solid purple;
   grid-area: votes;
+}
+.post-comment {
+  border: 2px solid yellow;
+  height: 50px;
 }

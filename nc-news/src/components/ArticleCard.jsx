@@ -20,8 +20,8 @@ class ArticleCard extends Component {
     } = this.props.article;
     return (
       <div className="article-card-container">
-        <Link to={`/articles/${_id}`} key={_id}>
-          <h1>{title}</h1>
+        <Link className="article-card-title" to={`/articles/${_id}`} key={_id}>
+          <span>{title}</span>
         </Link>
         <Vote
           className={"article-card-votes"}
@@ -29,10 +29,10 @@ class ArticleCard extends Component {
           _id={_id}
           type={"article"}
         />
+        <span className="article-card-time">At: {created_at}</span>
         <span className="article-card-user">
           Submitted By: {created_by.username}
         </span>
-        <span className="article-card-time">At: {created_at}</span>
         <span className="article-card-topic">
           Topic: <Link to={`/topics/${belongs_to}`}>{belongs_to}</Link>
         </span>

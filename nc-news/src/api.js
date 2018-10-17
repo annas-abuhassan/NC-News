@@ -25,8 +25,24 @@ export const getTopics = () => {
 
 export const makeVote = (updown, id, type) => {
   return axios
-    .patch(
-      `https://nc-news-aah.herokuapp.com/api/${type}s/${id}?votes=${updown}`
-    )
+    .patch(`${API_URL}/${type}s/${id}?votes=${updown}`)
     .then(({ data }) => data[type]);
+};
+
+export const addComment = (commentObj, id) => {
+  return axios
+    .post(`${API_URL}/articles/${id}/comments`, commentObj)
+    .then(({ data }) => data.comment);
+};
+
+export const getUser = username => {
+  return axios
+    .get(`${API_URL}/users/${username}`)
+    .then(({ data }) => data.user);
+};
+
+export const deleteComment = id => {
+  return axios
+    .delete(`${API_URL}/comments/${id}`)
+    .then(({ data }) => console.log(data.comment));
 };

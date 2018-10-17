@@ -17,6 +17,13 @@ nav {
   background: rgba(0, 255, 0, 0.4);
   grid-area: nav;
 }
+.nav-link {
+  margin: 10px;
+}
+
+.nav-link:hover {
+  color: red;
+}
 
 main {
   border: 2px solid rgba(0, 0, 255, 1);

@@ -2,16 +2,19 @@
   border: 2px solid rgba(0, 0, 0, 1);
   text-align: center;
   display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-areas:
-    "votes header user"
-    ". . user"
-    ". . time"
-    ". . topic";
+    "votes title user"
+    "votes title time"
+    "votes title topic";
 }
-.article-card-container h1 {
+.article-card-title {
   border: 2px solid rgba(255, 255, 255, 1);
-  grid-area: header;
+  display: block;
+  font-size: 200%;
+  height: 100%;
+  grid-area: title;
 }
 .article-card-votes {
   border: 2px solid rgb(252, 214, 0);

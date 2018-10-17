@@ -1,4 +1,20 @@
-.article-container {
+.article-main-container {
   border: 2px solid red;
   color: white;
+}
+
+.article-main-votes {
+  border: 2px solid azure;
+}
+
+.article-main-title {
+  border: 2px solid pink;
+}
+
+.article-main-body{
+
+}
+
+.article-main-details{
+  
 }

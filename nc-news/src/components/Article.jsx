@@ -20,21 +20,21 @@ class Article extends Component {
         votes
       }
     } = this.state;
-    const { id } = this.props;
+    const { id, user } = this.props;
     return (
-      <div className="article-container">
+      <div className="article-main-container">
         {created_by ? (
           <div>
-            <h1>Title: {title}</h1>
+            <h1 className="article-main-title">Title: {title}</h1>
             <Vote
-              className={"article-card-votes"}
+              className={"article-main-votes"}
               votes={votes}
               _id={_id}
               type={"article"}
             />
             <h1>Submitted: {created_at}</h1>
             <h1>Comment Count: {comment_count}</h1>
-            <p>{body}</p> <Comments id={id} />
+            <p>{body}</p> <Comments user={user} id={id} />
           </div>
         ) : (
           <h1>I AM LOADING U FOOL</h1>
