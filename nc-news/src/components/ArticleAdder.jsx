@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Popup from "reactjs-popup";
+import "./ArticleAdder.css";
 import * as api from "../api.js";
 
 class ArticleAdder extends Component {
   state = {
     title: "",
     topic: "",
-    body: ""
+    body: "",
+    validArticle: false
   };
 
   render() {
@@ -22,47 +24,46 @@ class ArticleAdder extends Component {
           modal
         >
           {close => (
-            <div className="modal">
-              <div className="header"> Add Article!</div>
+            <div className="add-article-container">
               <form>
-                <label for="title">Title</label>
-                <input
-                  id="title"
-                  value={title}
-                  name="title"
-                  onChange={this.handleChange}
-                />
-                <br />
-                <label for="body">Body</label>
-                <input
-                  id="body"
-                  value={body}
-                  name="body"
-                  onChange={this.handleChange}
-                />
-                <label for="topic">Topic</label>
-                <input
-                  id="topic"
-                  value={topic}
-                  name="topic"
-                  onChange={this.handleChange}
-                />
+                <div className="title-container">
+                  <label htmlFor="title">Title: </label>
+                  <input
+                    id="title"
+                    value={title}
+                    name="title"
+                    className="add-article-title"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="topic-container">
+                  <label htmlFor="topic">Topic: </label>
+                  <input
+                    id="topic"
+                    value={topic}
+                    name="topic"
+                    className="add-article-topic"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="body-container">
+                  <label htmlFor="body">Body: </label>
+                  <input
+                    id="body"
+                    value={body}
+                    name="body"
+                    className="add-article-body"
+                    onChange={this.handleChange}
+                  />
+                </div>
               </form>
               <div className="actions">
                 <button
                   className="button"
                   onClick={() => {
-                    const articleObj = {
-                      title,
-                      created_by: _id,
-                      body
-                    };
+                    const articleObj = { title, created_by: _id, body };
                     api.addArticle(articleObj, topic);
-                    this.setState({
-                      body: "",
-                      title: "",
-                      topic: ""
-                    });
+                    this.setState({ body: "", title: "", topic: "" });
                     close();
                   }}
                 >
