@@ -1,34 +1,82 @@
+@font-face {
+  font-family: "Gotham";
+  src: url("../assets/fonts/GothamBoldRegular.ttf") format("truetype");
+}
+
+/* Grow */
+/* .hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+} */
+
 .article-card-container {
-  border: 2px solid rgba(0, 0, 0, 1);
+  margin: 10px;
+  border: 2px solid rgba(255, 255, 255, 1);
   text-align: center;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 0.25fr 4fr 1fr;
   grid-template-areas:
     "votes title user"
     "votes title time"
     "votes title topic";
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
 }
+
+.article-card-container:hover,
+.article-card-container:focus,
+.article-card-container:active {
+  transform: scale(1.008);
+}
+
 .article-card-title {
   border: 2px solid rgba(255, 255, 255, 1);
   display: block;
   font-size: 200%;
   height: 100%;
   grid-area: title;
+  color: white;
+  text-decoration: none;
+}
+
+.article-card-title:hover {
+  color: lightgray;
 }
 .article-card-votes {
-  border: 2px solid rgb(252, 214, 0);
+  border: 2px solid rgba(255, 255, 255, 1);
   grid-area: votes;
 }
 .article-card-user {
-  border: 2px solid rgb(5, 99, 250);
+  border: 2px solid rgba(255, 255, 255, 1);
   grid-area: user;
 }
 .article-card-time {
-  border: 2px solid rgb(5, 99, 250);
+  border: 2px solid rgba(255, 255, 255, 1);
   grid-area: time;
 }
 .article-card-topic {
-  border: 2px solid rgb(5, 99, 250);
+  border: 2px solid rgba(255, 255, 255, 1);
   grid-area: topic;
+}
+
+.vote-container {
+  display: block;
+  color: white;
 }

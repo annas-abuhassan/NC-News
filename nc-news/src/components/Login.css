@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Gotham";
+  src: url("../assets/fonts/GothamBoldRegular.ttf") format("truetype");
+}
+
+label {
+  color: white;
+}

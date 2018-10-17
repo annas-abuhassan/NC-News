@@ -14,19 +14,29 @@ class Vote extends Component {
 
     return (
       <span className={className}>
-        <button
-          disabled={voteModifier === 1}
-          onClick={() => handleVote("up", _id, type)}
-        >
-          Vote Up
-        </button>
-        <button
-          disabled={voteModifier === -1}
-          onClick={() => handleVote("down", _id, type)}
-        >
-          Vote Down
-        </button>
-        Votes: {votes + voteModifier}
+        <div className="vote-container">
+          <a href="#" class="hvr-icon-forward">
+            <i class="fa fa-chevron-circle-up hvr-icon" />
+          </a>
+          <button
+            className="vote-up"
+            disabled={voteModifier === 1}
+            onClick={() => handleVote("up", _id, type)}
+          >
+            Vote Up
+          </button>
+          <p className="vote-count">{votes + voteModifier}</p>
+          <a href="#" class="hvr-icon-forward">
+            <i class="fa fa-chevron-circle-down hvr-icon" />
+          </a>
+          <button
+            className="vote-down"
+            disabled={voteModifier === -1}
+            onClick={() => handleVote("down", _id, type)}
+          >
+            Vote Down
+          </button>
+        </div>
       </span>
     );
   }

@@ -5,34 +5,54 @@
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr 6fr 1fr;
   grid-template-areas: "header" "nav" "main" "footer";
+  font-family: Gotham;
 }
 header {
-  border: 2px solid rgba(255, 0, 0, 1);
-  background: rgba(255, 0, 0, 0.4);
+  background: #202829;
   grid-area: header;
 }
 
+header img {
+  /* border: 2px solid white; */
+  height: 200px;
+}
+
+.font-test {
+  /* border: 2px solid white; */
+
+  font-size: 20px;
+  color: white;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../assets/fonts/GothamBoldRegular.ttf") format("truetype");
+}
+
 nav {
-  border: 2px solid rgba(0, 255, 0, 1);
-  background: rgba(0, 255, 0, 0.4);
+  /* border: 2px solid white; */
+  background: #202829;
   grid-area: nav;
 }
 .nav-link {
+  text-decoration: none;
   margin: 10px;
+  color: white;
 }
 
 .nav-link:hover {
-  color: red;
+  color: #ba1f31;
 }
 
 main {
-  border: 2px solid rgba(0, 0, 255, 1);
-  background: rgba(0, 0, 255, 0.4);
+  border: 2px solid white;
+  background: #ba1f31;
   grid-area: main;
 }
 
 footer {
-  border: 2px solid rgba(0, 255, 255, 1);
-  background: rgba(0, 255, 255, 0.4);
+  border: 2px solid white;
+  color: white;
+  background: #202829;
   grid-area: footer;
 }

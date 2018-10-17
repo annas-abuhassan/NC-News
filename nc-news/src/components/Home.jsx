@@ -19,7 +19,10 @@ class Home extends Component {
     const { userLogin, userLogout } = this;
     return (
       <div className="container">
-        <header>NC News!</header>
+        <header>
+          <img src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_second.png" />
+          <p className="font-test">A Coding Education Like No Other</p>
+        </header>
         <nav className="nav-container">
           <Link className="nav-link" to="/">
             Home
