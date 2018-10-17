@@ -3,6 +3,7 @@ import { Link, Router } from "@reach/router";
 import ArticleList from "./ArticleList";
 import Article from "./Article";
 import Login from "./Login";
+import Logout from "./Logout";
 import * as api from "../api.js";
 import "./Home.css";
 
@@ -28,7 +29,7 @@ class Home extends Component {
               </Link>
             );
           })}
-          <Login userLogin={this.userLogin} />
+          {!user.username ? <Login userLogin={this.userLogin} /> : <Logout />}
         </nav>
         <main>
           <Router>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Comments from "./Comments";
 import Vote from "./Vote";
+import PropTypes from "prop-types";
 import "./Article.css";
 import * as api from "../api.js";
 
@@ -21,6 +22,7 @@ class Article extends Component {
       }
     } = this.state;
     const { id, user } = this.props;
+    console.log(this.props);
     return (
       <div className="article-main-container">
         {created_by ? (
@@ -52,5 +54,10 @@ class Article extends Component {
     );
   };
 }
+
+Article.propTypes = {
+  id: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired
+};
 
 export default Article;

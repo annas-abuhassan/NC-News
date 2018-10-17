@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Vote from "./Vote";
 import CommentAdder from "./CommentAdder";
-// import CommentDeleter from "./CommentDeleter";
 import PropTypes from "prop-types";
 import * as api from "../api.js";
 import "./Comments.css";
@@ -39,7 +38,6 @@ class Comments extends Component {
                 type={"comment"}
               />
               {user.username === username ? (
-                // <CommentDeleter id={_id} className="comment-deleter-button" />
                 <button onClick={() => this.deleteComment(_id)}>
                   New Delete Button
                 </button>

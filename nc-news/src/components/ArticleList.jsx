@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
+import PropTypes from "prop-types";
 import * as api from "../api.js";
 
 class ArticleList extends Component {
@@ -29,12 +30,17 @@ class ArticleList extends Component {
   };
 
   fetchArticles = () => {
-    api.getArticles(this.props.topic).then(articles =>
+    const { topic } = this.props;
+    api.getArticles(topic).then(articles =>
       this.setState({
         articles
       })
     );
   };
 }
+
+ArticleList.propTypes = {
+  topic: PropTypes.string
+};
 
 export default ArticleList;
