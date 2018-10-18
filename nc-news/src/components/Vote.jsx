@@ -13,23 +13,21 @@ class Vote extends Component {
     const { handleVote } = this;
 
     return (
-      <span className={className}>
-        <div className="vote-container">
-          <i
-            className="fa fa-chevron-circle-up hvr-icon"
-            onClick={() =>
-              voteModifier !== 1 ? handleVote("up", _id, type) : voteModifier
-            }
-          />
-          <p className="vote-count">{votes + voteModifier}</p>
-          <i
-            className="fa fa-chevron-circle-down hvr-icon"
-            onClick={() =>
-              voteModifier !== -1 ? handleVote("down", _id, type) : -1
-            }
-          />
-        </div>
-      </span>
+      <div className={className}>
+        <i
+          className="fa fa-chevron-circle-up hvr-icon"
+          onClick={() =>
+            voteModifier !== 1 ? handleVote("up", _id, type) : voteModifier
+          }
+        />
+        <p className="vote-count">{votes + voteModifier}</p>
+        <i
+          className="fa fa-chevron-circle-down hvr-icon"
+          onClick={() =>
+            voteModifier !== -1 ? handleVote("down", _id, type) : -1
+          }
+        />
+      </div>
     );
   }
 

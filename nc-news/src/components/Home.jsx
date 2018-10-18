@@ -60,14 +60,14 @@ class Home extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="fab fa-linkedin" />
+            <i className="fab fa-linkedin" />
           </a>
           <a
             href="https://github.com/annas-abuhassan"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="fab fa-github-square" />
+            <i className="fab fa-github-square" />
           </a>
         </footer>
       </div>

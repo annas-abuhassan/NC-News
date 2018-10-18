@@ -2,11 +2,20 @@
   font-family: "Gotham";
   src: url("../assets/fonts/GothamBoldRegular.ttf") format("truetype");
 }
+/* 
 
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 0.25fr 4fr 1fr;
+  grid-template-areas:
+    "votes title user"
+    "votes title time"
+    "votes title topic"; */
 .article-card-container {
+  color: white;
   max-width: 1240px;
   margin: 10px auto;
-  border: 2px solid rgba(255, 255, 255, 1);
+  border: 2px solid black;
   text-align: center;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -27,42 +36,59 @@
 .article-card-container:focus,
 .article-card-container:active {
   transform: scale(1.008);
-  border: 2px solid rgba(0, 0, 0, 1);
+  background-color: white;
+  color: #ba1f31;
+}
+
+.article-card-container:hover .article-card-title,
+.article-card-container:focus .article-card-title,
+.article-card-container:active .article-card-title {
+  transform: scale(1.008);
+  background-color: white;
+  color: #ba1f31;
+}
+
+.article-card-container:hover .article-card-votes,
+.article-card-container:focus .article-card-votes,
+.article-card-container:active .article-card-votes {
+  transform: scale(1.008);
+  background-color: white;
+  color: #ba1f31;
+}
+
+.article-card-container:hover .article-card-topic,
+.article-card-container:focus .article-card-topic,
+.article-card-container:active .article-card-topic {
+  transform: scale(1.008);
+  background-color: white;
+  color: #ba1f31;
 }
 
 .article-card-title {
-  border: 2px solid rgba(255, 255, 255, 1);
+  margin: 10px auto;
+  color: white;
   display: block;
   font-size: 200%;
   grid-area: title;
-  color: white;
   text-decoration: none;
 }
 
-.article-card-title:hover {
-  color: lightgray;
-}
 .article-card-votes {
-  border: 2px solid rgba(255, 255, 255, 1);
+  border-right: 2px solid black;
   grid-area: votes;
+  display: block;
+  font-size: 15px;
 }
+
 .article-card-user {
-  border: 2px solid rgba(255, 255, 255, 1);
   grid-area: user;
 }
 .article-card-time {
-  border: 2px solid rgba(255, 255, 255, 1);
   grid-area: time;
 }
 .article-card-topic {
-  border: 2px solid rgba(255, 255, 255, 1);
-  grid-area: topic;
-}
-
-.vote-container {
-  display: block;
   color: white;
-  font-size: 15px;
+  grid-area: topic;
 }
 
 i {
