@@ -13,15 +13,15 @@ header {
 }
 
 header img {
-  /* border: 2px solid white; */
   height: 200px;
 }
-
-.font-test {
-  /* border: 2px solid white; */
-
-  font-size: 20px;
+.header-tag {
   color: white;
+  font-size: 25px;
+}
+
+.header-tag:hover {
+  color: #ba1f31;
 }
 
 @font-face {
@@ -45,14 +45,24 @@ nav {
 }
 
 main {
-  border: 2px solid white;
+  /* border: 2px solid white; */
   background: #ba1f31;
   grid-area: main;
 }
 
 footer {
-  border: 2px solid white;
+  height: 100%;
+  /* border: 2px solid white; */
   color: white;
   background: #202829;
   grid-area: footer;
+}
+
+footer i {
+  margin: 15 auto;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 35px;
+}
+footer i:hover {
+  color: #ba1f31;
 }

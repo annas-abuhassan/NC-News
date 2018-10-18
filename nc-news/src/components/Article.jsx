@@ -26,7 +26,7 @@ class Article extends Component {
       <div className="article-main-container">
         {created_by ? (
           <div>
-            <h1 className="article-main-title">Title: {title}</h1>
+            <h1 className="article-main-title">{title}</h1>
             <Vote
               className={"article-main-votes"}
               votes={votes}

@@ -3,26 +3,9 @@
   src: url("../assets/fonts/GothamBoldRegular.ttf") format("truetype");
 }
 
-/* Grow */
-/* .hvr-grow {
-    display: inline-block;
-    vertical-align: middle;
-    transform: translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    transition-duration: 0.3s;
-    transition-property: transform;
-}
-
-.hvr-grow:hover,
-.hvr-grow:focus,
-.hvr-grow:active {
-    transform: scale(1.1);
-} */
-
 .article-card-container {
-  margin: 10px;
+  max-width: 1240px;
+  margin: 10px auto;
   border: 2px solid rgba(255, 255, 255, 1);
   text-align: center;
   display: grid;
@@ -44,13 +27,13 @@
 .article-card-container:focus,
 .article-card-container:active {
   transform: scale(1.008);
+  border: 2px solid rgba(0, 0, 0, 1);
 }
 
 .article-card-title {
   border: 2px solid rgba(255, 255, 255, 1);
   display: block;
   font-size: 200%;
-  height: 100%;
   grid-area: title;
   color: white;
   text-decoration: none;
@@ -79,4 +62,12 @@
 .vote-container {
   display: block;
   color: white;
+  font-size: 15px;
+}
+
+i {
+  margin: 5px;
+}
+i:hover {
+  color: lightgray;
 }

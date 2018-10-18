@@ -15,27 +15,19 @@ class Vote extends Component {
     return (
       <span className={className}>
         <div className="vote-container">
-          <a href="#" class="hvr-icon-forward">
-            <i class="fa fa-chevron-circle-up hvr-icon" />
-          </a>
-          <button
-            className="vote-up"
-            disabled={voteModifier === 1}
-            onClick={() => handleVote("up", _id, type)}
-          >
-            Vote Up
-          </button>
+          <i
+            className="fa fa-chevron-circle-up hvr-icon"
+            onClick={() =>
+              voteModifier !== 1 ? handleVote("up", _id, type) : voteModifier
+            }
+          />
           <p className="vote-count">{votes + voteModifier}</p>
-          <a href="#" class="hvr-icon-forward">
-            <i class="fa fa-chevron-circle-down hvr-icon" />
-          </a>
-          <button
-            className="vote-down"
-            disabled={voteModifier === -1}
-            onClick={() => handleVote("down", _id, type)}
-          >
-            Vote Down
-          </button>
+          <i
+            className="fa fa-chevron-circle-down hvr-icon"
+            onClick={() =>
+              voteModifier !== -1 ? handleVote("down", _id, type) : -1
+            }
+          />
         </div>
       </span>
     );

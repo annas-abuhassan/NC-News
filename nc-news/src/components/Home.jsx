@@ -20,17 +20,19 @@ class Home extends Component {
     return (
       <div className="container">
         <header>
-          <img src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_second.png" />
-          <p className="font-test">A Coding Education Like No Other</p>
+          <img
+            alt="Northcoders Logo"
+            src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_second.png"
+          />
+          <Link className="nav-link" to="/">
+            <p className="header-tag">NEWS</p>
+          </Link>
         </header>
         <nav className="nav-container">
-          <Link className="nav-link" to="/">
-            Home
-          </Link>
           {topics.map(({ slug, title, _id }) => {
             return (
               <Link className="nav-link" key={_id} to={`/topics/${slug}`}>
-                {title}
+                {`nc/${slug}`}
               </Link>
             );
           })}
@@ -52,7 +54,22 @@ class Home extends Component {
             <Article user={user} path="/articles/:id" />
           </Router>
         </main>
-        <footer>Created as part of FE-2 NC-News sprint.</footer>
+        <footer>
+          <a
+            href="https://www.linkedin.com/in/annas-abu-hassan-40960659/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-linkedin" />
+          </a>
+          <a
+            href="https://github.com/annas-abuhassan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-github-square" />
+          </a>
+        </footer>
       </div>
     );
   }

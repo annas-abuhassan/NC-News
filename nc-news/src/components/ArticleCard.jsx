@@ -34,7 +34,7 @@ class ArticleCard extends Component {
           Submitted By: {created_by.username}
         </span>
         <span className="article-card-topic">
-          Topic: <Link to={`/topics/${belongs_to}`}>{belongs_to}</Link>
+          <Link to={`/topics/${belongs_to}`}>{`nc/${belongs_to}`}</Link>
         </span>
       </div>
     );
