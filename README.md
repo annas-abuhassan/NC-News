@@ -2,7 +2,7 @@
 
 Readme is obviously W.I.P (soz)
 
-hosted link =>
+hosted link => https://5bc9c8263813f06d2fec9f73--aah-nc-news.netlify.com/
 
 ## please don't break anything
 
