@@ -48,5 +48,5 @@ export const deleteComment = id => {
 export const addArticle = (articleObj, topic) => {
   return axios
     .post(`${API_URL}/topics/${topic}/articles`, articleObj)
-    .then(({ data }) => console.log(data));
+    .then(({ data }) => data.article);
 };

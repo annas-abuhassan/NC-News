@@ -1,14 +1,18 @@
 .comment-list-container {
-  border: 2px solid pink;
+  max-width: 1240px;
 }
 .comment-container {
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 0.25fr 4fr;
   grid-template-areas:
-    "details body"
-    "votes .";
+    "votes details"
+    "votes body";
   border: 2px solid black;
+  background: white;
+  color: #ba1f31;
+  margin: 10px auto;
 }
 
 .comment-details {
@@ -23,11 +27,7 @@
 }
 
 .comment-votes {
-  color: purple;
-  border: 2px solid purple;
+  color: #ba1f31;
+  border-right: 2px solid #202829;
   grid-area: votes;
-}
-.post-comment {
-  border: 2px solid yellow;
-  height: 50px;
 }

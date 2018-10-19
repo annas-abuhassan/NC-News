@@ -2,35 +2,6 @@
   font-family: "Gotham";
   src: url("../assets/fonts/GothamBoldRegular.ttf") format("truetype");
 }
-/* 
-
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 0.25fr 4fr 1fr;
-  grid-template-areas:
-    "votes title user"
-    "votes title time"
-    "votes title topic"; */
-.article-card-container {
-  color: white;
-  max-width: 1240px;
-  margin: 10px auto;
-  border: 2px solid black;
-  text-align: center;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 0.25fr 4fr 1fr;
-  grid-template-areas:
-    "votes title user"
-    "votes title time"
-    "votes title topic";
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  transition-duration: 0.3s;
-  transition-property: transform;
-}
 
 .article-card-container:hover,
 .article-card-container:focus,
@@ -64,13 +35,50 @@
   color: #ba1f31;
 }
 
+.article-card-container {
+  color: white;
+  max-width: 1240px;
+  margin: 10px auto;
+  border: 2px solid black;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 0.25fr 4fr;
+  grid-template-areas: "votes main";
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.valid-input {
+  color: green;
+}
+
+.invalid-input {
+  color: red;
+}
+
+.article-card-main {
+  width: 90%;
+  text-align: left;
+  grid-area: main;
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "topic user time" "title title title";
+}
+
 .article-card-title {
+  text-align: left;
+  width: 90%;
   margin: 10px auto;
   color: white;
   display: block;
   font-size: 200%;
-  grid-area: title;
   text-decoration: none;
+  grid-area: title;
 }
 
 .article-card-votes {
@@ -81,19 +89,24 @@
 }
 
 .article-card-user {
+  
+  margin: 5px;
   grid-area: user;
 }
 .article-card-time {
+  margin: 5px;
   grid-area: time;
 }
 .article-card-topic {
-  color: white;
+  margin: 5px;
   grid-area: topic;
+  color: white;
 }
 
 i {
   margin: 5px;
 }
+
 i:hover {
   color: lightgray;
 }

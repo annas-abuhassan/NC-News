@@ -16,8 +16,7 @@
 
 .comment-adder-body-field {
   height: 100px;
-  line-height: 100px;
-  width: 100%;
+  width: 300px;
   grid-area: body;
 }
 

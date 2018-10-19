@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import moment from "moment";
+import LoadingSpinner from "./LoadingSpinner";
+import { Link } from "@reach/router";
 import Comments from "./Comments";
 import Vote from "./Vote";
 import PropTypes from "prop-types";
@@ -11,31 +14,43 @@ class Article extends Component {
   };
   render() {
     const {
-      article: {
-        title,
-        body,
-        created_at,
-        comment_count,
-        created_by,
-        _id,
-        votes
-      }
+      article: { title, body, created_at, created_by, belongs_to, _id, votes }
     } = this.state;
     const { id, user } = this.props;
-    return (
+
+    return !created_by ? (
+      <LoadingSpinner />
+    ) : (
       <div className="article-main-container">
         {created_by ? (
           <div>
-            <h1 className="article-main-title">{title}</h1>
-            <Vote
-              className={"article-main-votes"}
-              votes={votes}
-              _id={_id}
-              type={"article"}
-            />
-            <h1>Submitted: {created_at}</h1>
-            <h1>Comment Count: {comment_count}</h1>
-            <p>{body}</p> <Comments user={user} id={id} />
+            <div className="article-main-main">
+              <Vote
+                className={"article-main-votes"}
+                votes={votes}
+                _id={_id}
+                type={"article"}
+              />
+              <div className="article-main-details">
+                <Link
+                  className="article-main-topic"
+                  to={`/topics/${belongs_to}`}
+                >
+                  <span>{`nc/${belongs_to}`}</span>
+                </Link>
+                <span className="article-main-user">
+                  Posted By:{" "}
+                  {`${created_by.username} ${moment(created_at).fromNow()}`}
+                </span>
+                {/* <span className="article-main-time" /> */}
+              </div>
+              <h1 className="article-main-title">{title}</h1>
+              <p className="article-main-body">{body}</p>
+            </div>
+
+            <div className="article-main-comments">
+              <Comments user={user} id={id} />{" "}
+            </div>
           </div>
         ) : (
           <h1>I AM LOADING U FOOL</h1>
@@ -51,6 +66,13 @@ class Article extends Component {
         article
       })
     );
+  };
+
+  componentDidUpdate = prevProps => {
+    if (this.props.location.state.article && prevProps !== this.props)
+      this.setState({
+        article: this.props.location.state.article
+      });
   };
 }
 

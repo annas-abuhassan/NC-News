@@ -5,47 +5,58 @@ import ArticleList from "./ArticleList";
 import Article from "./Article";
 import Login from "./Login";
 import Logout from "./Logout";
+
+import ComponentIncrementer from "./ComponentIncrementer";
 import * as api from "../api.js";
 import "./Home.css";
+import northcoders_logo from "../assets/northcoders_logo.png";
 
 class Home extends Component {
   state = {
     topics: [],
+    showMore: 0,
     user: {}
   };
 
   render() {
-    const { user, topics } = this.state;
-    const { userLogin, userLogout } = this;
+    const { user, topics, showMore } = this.state;
     return (
       <div className="container">
         <header>
-          <img
-            alt="Northcoders Logo"
-            src="https://northcoders.com/images/logos/learn_to_code_manchester_rw_second.png"
-          />
+          <div className="login-logut">
+            {!user.username ? (
+              <Login className="login" userLogin={this.userLogin} />
+            ) : (
+              <Logout
+                className="logout"
+                user={user}
+                userLogout={this.userLogout}
+              />
+            )}
+            {user.username ? (
+              <ArticleAdder addArticle={this.addArticle} user={user} />
+            ) : (
+              <div />
+            )}
+          </div>
+          <img alt="Northcoders Logo" src={northcoders_logo} />
           <Link className="nav-link" to="/">
-            <p className="header-tag">NEWS</p>
+            <div className="header-tag">NEWS</div>
           </Link>
         </header>
         <nav className="nav-container">
-          {topics.map(({ slug, title, _id }) => {
+          {topics.slice(0, 5 + showMore).map(({ slug, _id }) => {
             return (
               <Link className="nav-link" key={_id} to={`/topics/${slug}`}>
                 {`nc/${slug}`}
               </Link>
             );
           })}
-          {!user.username ? (
-            <Login className="nav-login" userLogin={userLogin} />
-          ) : (
-            <Logout
-              className="nav-logout"
-              user={user}
-              userLogout={userLogout}
-            />
-          )}
-          {user.username ? <ArticleAdder user={user} /> : <div />}
+          <ComponentIncrementer
+            className={"nav-topics-show-more"}
+            amount={3}
+            updateShowMore={this.showMore}
+          />
         </nav>
         <main>
           <Router>
@@ -74,7 +85,18 @@ class Home extends Component {
     );
   }
 
+  showMore = qty => {
+    const newAmount = this.state.showMore + qty;
+    if (newAmount <= 15)
+      this.setState({
+        showMore: newAmount
+      });
+  };
+
   componentDidMount = () => {
+    const username = sessionStorage.getItem("username");
+    if (username) this.userLogin(username);
+
     api.getTopics().then(topics =>
       this.setState({
         topics
@@ -83,6 +105,7 @@ class Home extends Component {
   };
 
   userLogin = user => {
+    // sessionStorage.setItem("username", JSON.stringify(user));
     this.setState({
       user
     });

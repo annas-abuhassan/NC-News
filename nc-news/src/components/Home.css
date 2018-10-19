@@ -7,6 +7,7 @@
   grid-template-areas: "header" "nav" "main" "footer";
   font-family: Gotham;
 }
+
 header {
   background: #202829;
   grid-area: header;
@@ -17,7 +18,7 @@ header img {
 }
 .header-tag {
   color: white;
-  font-size: 25px;
+  font-size: 50px;
 }
 
 .header-tag:hover {
@@ -30,7 +31,6 @@ header img {
 }
 
 nav {
-  /* border: 2px solid white; */
   background: #202829;
   grid-area: nav;
 }
@@ -44,15 +44,22 @@ nav {
   color: #ba1f31;
 }
 
+.nav-container {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.nav-topics-show-more {
+  margin: 10px auto;
+}
+
 main {
-  /* border: 2px solid white; */
   background: #ba1f31;
   grid-area: main;
 }
 
 footer {
   height: 100%;
-  /* border: 2px solid white; */
   color: white;
   background: #202829;
   grid-area: footer;

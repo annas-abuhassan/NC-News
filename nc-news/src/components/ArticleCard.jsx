@@ -26,22 +26,24 @@ class ArticleCard extends Component {
           _id={_id}
           type={"article"}
         />
-        <div className="article-card-main" />
-        <Link
-          className={"article-card-title"}
-          to={`/articles/${_id}`}
-          key={_id}
-        >
-          <span>{title}</span>
-        </Link>
-
-        <span className="article-card-time">At: {created_at}</span>
-        <span className="article-card-user">
-          Submitted By: {created_by.username}
-        </span>
-        <Link className="article-card-topic" to={`/topics/${belongs_to}`}>
-          <span>{`nc/${belongs_to}`}</span>
-        </Link>
+        <div className="article-card-main">
+          <div className="article-card-details">
+            <Link className="article-card-topic" to={`/topics/${belongs_to}`}>
+              <span>{`nc/${belongs_to}`}</span>
+            </Link>
+            <span className="article-card-user">
+              Submitted By: {created_by.username}
+            </span>
+            <span className="article-card-time">At: {created_at}</span>
+          </div>
+          <Link
+            className={"article-card-title"}
+            to={`/articles/${_id}`}
+            key={_id}
+          >
+            <span>{title}</span>
+          </Link>
+        </div>
       </div>
     );
   }

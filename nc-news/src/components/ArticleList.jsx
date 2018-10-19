@@ -1,20 +1,33 @@
 import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
+import LoadingSpinner from "./LoadingSpinner";
+import ScrollButton from "./ScrollButton";
+import "./ArticleList.css";
 import PropTypes from "prop-types";
+import ComponentIncrementer from "./ComponentIncrementer";
 import * as api from "../api.js";
 
 class ArticleList extends Component {
   state = {
-    articles: []
+    articles: [],
+    showMore: 0
   };
 
   render() {
-    const { articles } = this.state;
-    return (
+    const { articles, showMore } = this.state;
+    return !articles.length ? (
+      <LoadingSpinner />
+    ) : (
       <div className="article-list-container">
-        {articles.map(article => {
+        {articles.slice(0, 10 + showMore).map(article => {
           return <ArticleCard key={article._id} article={article} />;
         })}
+        <ComponentIncrementer
+          className={"article-list-show-more"}
+          amount={5}
+          updateShowMore={this.showMore}
+        />
+        <ScrollButton />
       </div>
     );
   }
@@ -36,6 +49,13 @@ class ArticleList extends Component {
         articles
       })
     );
+  };
+
+  showMore = qty => {
+    const newAmount = this.state.showMore + qty;
+    this.setState({
+      showMore: newAmount
+    });
   };
 }
 

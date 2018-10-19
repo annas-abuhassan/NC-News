@@ -6,3 +6,13 @@
 label {
   color: white;
 }
+
+.login {
+  color: white;
+  margin: 10px auto;
+}
+
+.logout {
+  color: white;
+  margin: 10px auto;
+}

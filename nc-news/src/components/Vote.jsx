@@ -15,14 +15,18 @@ class Vote extends Component {
     return (
       <div className={className}>
         <i
-          className="fa fa-chevron-circle-up hvr-icon"
+          className={
+            voteModifier === 1 ? "" : "fa fa-chevron-circle-up hvr-icon"
+          }
           onClick={() =>
             voteModifier !== 1 ? handleVote("up", _id, type) : voteModifier
           }
         />
         <p className="vote-count">{votes + voteModifier}</p>
         <i
-          className="fa fa-chevron-circle-down hvr-icon"
+          className={
+            voteModifier === -1 ? "" : "fa fa-chevron-circle-down hvr-icon"
+          }
           onClick={() =>
             voteModifier !== -1 ? handleVote("down", _id, type) : -1
           }

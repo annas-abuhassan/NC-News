@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import "./CommentAdder.css";
 
 class CommentAdder extends Component {
@@ -7,17 +8,13 @@ class CommentAdder extends Component {
   };
 
   render() {
-    const {
-      className,
-      user: { username }
-    } = this.props;
+    const { className } = this.props;
 
     const { handleSubmit, handleChange } = this;
     const { body } = this.state;
 
     return (
       <form onSubmit={handleSubmit} className={className}>
-        <label className="comment-adder-label">Comment as: {username}</label>
         <div className="comment-adder-body-container">
           <input
             onChange={handleChange}
@@ -46,4 +43,8 @@ class CommentAdder extends Component {
   };
 }
 
+CommentAdder.propTypes = {
+  user: PropTypes.object,
+  className: PropTypes.string.isRequired
+};
 export default CommentAdder;
