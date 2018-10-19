@@ -1,13 +1,12 @@
-// things to do tomorrow:
+import React from "react";
 
-// some kind of sort on the topics shown
-// some kind of sort on the articles show
+const NotFound = props => {
+  return (
+    <div>
+      Somethings gone wrong here...{" "}
+      {props.location.state ? <h1>{props.location.state.message}</h1> : <></>}
+    </div>
+  );
+};
 
-//users endpoint
-
-// individual article page formatting (article + comments)
-// generic error page to catch bad article id & bad route
-
-// general formatting
-
-// readme?
+export default NotFound;

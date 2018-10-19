@@ -1,18 +1,24 @@
 import React, { Component } from "react";
 import Vote from "./Vote";
+import moment from "moment";
 import CommentAdder from "./CommentAdder";
 import PropTypes from "prop-types";
+import LoadingSpinner from "./LoadingSpinner";
 import * as api from "../api.js";
 import "./Comments.css";
 
 class Comments extends Component {
   state = {
-    comments: []
+    comments: [],
+    loaded: false
   };
   render() {
-    const { comments } = this.state;
+    const { comments, loaded } = this.state;
     const { user } = this.props;
-    return (
+
+    return !loaded ? (
+      <LoadingSpinner />
+    ) : (
       <div className="comment-list-container">
         {comments.map(comment => {
           const {
@@ -25,10 +31,7 @@ class Comments extends Component {
           return (
             <div className="comment-container" key={_id}>
               <div className="comment-details">
-                Created by:
-                {username}
-                <br />
-                Time: {created_at}
+                Posted By: {`${username} ${moment(created_at).fromNow()}`}
               </div>
               <span className="comment-body">{body}</span>
               <Vote
@@ -47,19 +50,24 @@ class Comments extends Component {
         })}
         {user.username ? (
           <CommentAdder
+            commentCount={comments.length}
             addComment={this.addComment}
             className="comment-adder-container"
             user={user}
           />
         ) : (
-          <></>
+          <h1>Login to add a comment!</h1>
         )}
       </div>
     );
   }
 
   deleteComment = id => {
+    this.setState({
+      loaded: false
+    });
     api.deleteComment(id).then(() => {
+      this.setState({ comments: [] });
       this.fetchComments(this.props.id);
     });
   };
@@ -83,17 +91,31 @@ class Comments extends Component {
     });
   };
 
+  componentDidUpdate = prevProps => {
+    const { id } = this.props;
+    if (prevProps !== this.props) this.fetchComments(id);
+  };
+
   componentDidMount = () => {
     const { id } = this.props;
     this.fetchComments(id);
   };
 
   fetchComments = id => {
-    api.getArticleCommentsById(id).then(comments => {
-      this.setState({
-        comments
+    api
+      .getArticleCommentsById(id)
+      .then(comments => {
+        this.setState({
+          comments,
+          loaded: true
+        });
+      })
+      .catch(err => {
+        this.setState({
+          comments: [],
+          loaded: true
+        });
       });
-    });
   };
 }
 Comments.propTypes = {

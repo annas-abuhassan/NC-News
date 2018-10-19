@@ -8,6 +8,12 @@
   font-family: Gotham;
 }
 
+.login-logout {
+  color: white;
+  text-align: left;
+  margin: 5px;
+}
+
 header {
   background: #202829;
   grid-area: header;

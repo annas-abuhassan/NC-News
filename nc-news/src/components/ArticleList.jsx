@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { navigate } from "@reach/router";
 import ArticleCard from "./ArticleCard";
 import LoadingSpinner from "./LoadingSpinner";
 import ScrollButton from "./ScrollButton";
@@ -22,11 +23,15 @@ class ArticleList extends Component {
         {articles.slice(0, 10 + showMore).map(article => {
           return <ArticleCard key={article._id} article={article} />;
         })}
-        <ComponentIncrementer
-          className={"article-list-show-more"}
-          amount={5}
-          updateShowMore={this.showMore}
-        />
+        {showMore + 10 >= articles.length ? (
+          <></>
+        ) : (
+          <ComponentIncrementer
+            className={"article-list-show-more"}
+            amount={5}
+            updateShowMore={this.showMore}
+          />
+        )}
         <ScrollButton />
       </div>
     );
@@ -44,11 +49,16 @@ class ArticleList extends Component {
 
   fetchArticles = () => {
     const { topic } = this.props;
-    api.getArticles(topic).then(articles =>
-      this.setState({
-        articles
-      })
-    );
+    api.getArticles(topic).then(articles => {
+      articles.length
+        ? this.setState({
+            articles
+          })
+        : navigate("/error", {
+            replace: true,
+            state: { message: "Topic does not exist!", from: "/topics" }
+          });
+    });
   };
 
   showMore = qty => {

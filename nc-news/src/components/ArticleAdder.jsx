@@ -58,7 +58,7 @@ class ArticleAdder extends Component {
                   </p>
                 </div>
                 <div className="body-container">
-                  <input
+                  <textarea
                     id="body"
                     name="body"
                     className="add-article-body"

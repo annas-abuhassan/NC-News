@@ -2,6 +2,7 @@
   max-width: 1240px;
 }
 .comment-container {
+  text-align: left;
   height: 100%;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -16,17 +17,18 @@
 }
 
 .comment-details {
-  border: 2px solid grey;
+  margin: 5px;
   grid-area: details;
 }
 
 .comment-body {
+  margin: 5px;
   height: 100%;
-  border: 2px solid green;
   grid-area: body;
 }
 
 .comment-votes {
+  text-align: center;
   color: #ba1f31;
   border-right: 2px solid #202829;
   grid-area: votes;

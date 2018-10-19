@@ -10,11 +10,10 @@ class Login extends Component {
   };
 
   render() {
-    const { handleSubmit, handleChange } = this;
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <label>Username:</label>
-        <input label="login" onChange={handleChange} type="text" />
+        <input label="login" onChange={this.handleChange} type="text" />
         <button className="login-button">Login!</button>
         {this.state.err ? <p>User does not exist!</p> : <></>}
       </form>

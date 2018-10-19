@@ -8,22 +8,24 @@ class CommentAdder extends Component {
   };
 
   render() {
-    const { className } = this.props;
-
-    const { handleSubmit, handleChange } = this;
+    const { className, commentCount } = this.props;
     const { body } = this.state;
 
     return (
-      <form onSubmit={handleSubmit} className={className}>
+      <form onSubmit={this.handleSubmit} className={className}>
         <div className="comment-adder-body-container">
-          <input
-            onChange={handleChange}
+          <textarea
+            onChange={this.handleChange}
             className="comment-adder-body-field"
             value={body}
-            placeholder="Add a comment..."
+            placeholder={
+              commentCount
+                ? "Add a comment..."
+                : "Be the first to add a comment!"
+            }
           />
-          <button className="comment-adder-submit-button">Comment!</button>
         </div>
+        <button className="comment-adder-submit-button">Comment!</button>
       </form>
     );
   }
@@ -44,6 +46,7 @@ class CommentAdder extends Component {
 }
 
 CommentAdder.propTypes = {
+  commentCount: PropTypes.number.isRequired,
   user: PropTypes.object,
   className: PropTypes.string.isRequired
 };

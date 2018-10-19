@@ -5,6 +5,7 @@ import ArticleList from "./ArticleList";
 import Article from "./Article";
 import Login from "./Login";
 import Logout from "./Logout";
+import NotFound from "./NotFound";
 
 import ComponentIncrementer from "./ComponentIncrementer";
 import * as api from "../api.js";
@@ -23,7 +24,7 @@ class Home extends Component {
     return (
       <div className="container">
         <header>
-          <div className="login-logut">
+          <div className="login-logout">
             {!user.username ? (
               <Login className="login" userLogin={this.userLogin} />
             ) : (
@@ -63,6 +64,8 @@ class Home extends Component {
             <ArticleList path="/" />
             <ArticleList path="/topics/:topic" />
             <Article user={user} path="/articles/:id" />
+            <NotFound path="/error" />
+            <NotFound path="/*" />
           </Router>
         </main>
         <footer>
@@ -94,9 +97,8 @@ class Home extends Component {
   };
 
   componentDidMount = () => {
-    const username = sessionStorage.getItem("username");
-    if (username) this.userLogin(username);
-
+    const user = sessionStorage.getItem("user");
+    if (user) this.userLogin(JSON.parse(user));
     api.getTopics().then(topics =>
       this.setState({
         topics
@@ -105,13 +107,14 @@ class Home extends Component {
   };
 
   userLogin = user => {
-    // sessionStorage.setItem("username", JSON.stringify(user));
+    sessionStorage.setItem("user", JSON.stringify(user));
     this.setState({
       user
     });
   };
 
   userLogout = () => {
+    sessionStorage.removeItem("username");
     this.setState({
       user: {}
     });

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import { Link } from "@reach/router";
 import PropTypes from "prop-types";
 import Vote from "./Vote";
@@ -32,9 +33,11 @@ class ArticleCard extends Component {
               <span>{`nc/${belongs_to}`}</span>
             </Link>
             <span className="article-card-user">
-              Submitted By: {created_by.username}
+              {`Posted By: ${created_by.username}`}
             </span>
-            <span className="article-card-time">At: {created_at}</span>
+            <span className="article-card-time">
+              {moment(created_at).fromNow()}
+            </span>
           </div>
           <Link
             className={"article-card-title"}

@@ -14,6 +14,7 @@ class LoadingSpinner extends React.Component {
       loading: true
     };
   }
+  
   render() {
     return (
       <div className="sweet-loading">
