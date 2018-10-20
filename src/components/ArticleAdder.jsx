@@ -29,52 +29,50 @@ class ArticleAdder extends Component {
         >
           {close => (
             <div className="add-article-container">
-              <form>
-                <div className="title-container">
-                  <label htmlFor="title">Title: </label>
-                  <input
-                    id="title"
-                    name="title"
-                    className="add-article-title"
-                    onChange={this.handleChange}
-                    placeholder="Title"
-                  />
-                  <p className={!err.title ? "valid-input" : "invalid-input"}>
-                    {title.length
-                      ? "Titles must be between between 5 and 15 characters!"
-                      : ""}
-                  </p>
-                </div>
-                <div className="topic-container">
-                  <label htmlFor="topic">Topic: </label>
-                  <input
-                    id="topic"
-                    name="topic"
-                    className="add-article-topic"
-                    onChange={this.handleChange}
-                    placeholder="Topic"
-                  />
-                  <p className={!err.topic ? "valid-input" : "invalid-input"}>
-                    {topic.length
-                      ? "Topic must be between between 5 and 15 characters, also this will be converted to kebabCase!"
-                      : ""}
-                  </p>
-                </div>
-                <div className="body-container">
-                  <textarea
-                    id="body"
-                    name="body"
-                    className="add-article-body"
-                    onChange={this.handleChange}
-                    placeholder="What are you thinking about?"
-                  />
-                  <p className={!err.body ? "valid-input" : "invalid-input"}>
-                    {body.length
-                      ? "Body must consist of at least 10 characters! Write something meaningful!"
-                      : ""}
-                  </p>
-                </div>
-              </form>
+              <div className="title-container">
+                <label htmlFor="title">Title: </label>
+                <input
+                  id="title"
+                  name="title"
+                  className="add-article-title"
+                  onChange={this.handleChange}
+                  placeholder="Title"
+                />
+                <p className={!err.title ? "valid-input" : "invalid-input"}>
+                  {title.length
+                    ? "Titles must be between between 5 and 15 characters!"
+                    : ""}
+                </p>
+              </div>
+              <div className="topic-container">
+                <label htmlFor="topic">Topic: </label>
+                <input
+                  id="topic"
+                  name="topic"
+                  className="add-article-topic"
+                  onChange={this.handleChange}
+                  placeholder="Topic"
+                />
+                <p className={!err.topic ? "valid-input" : "invalid-input"}>
+                  {topic.length
+                    ? "Topic must be between between 5 and 15 characters, also this will be converted to kebabCase!"
+                    : ""}
+                </p>
+              </div>
+              <div className="body-container">
+                <textarea
+                  id="body"
+                  name="body"
+                  className="add-article-body"
+                  onChange={this.handleChange}
+                  placeholder="What are you thinking about?"
+                />
+                <p className={!err.body ? "valid-input" : "invalid-input"}>
+                  {body.length
+                    ? "Body must consist of at least 10 characters! Write something meaningful!"
+                    : ""}
+                </p>
+              </div>
               <div className="actions">
                 <button
                   className="button"
