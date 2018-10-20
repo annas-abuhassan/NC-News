@@ -61,14 +61,6 @@ class App extends Component {
     );
   }
 
-  showMore = qty => {
-    const newAmount = this.state.showMore + qty;
-    if (newAmount <= 15)
-      this.setState({
-        showMore: newAmount
-      });
-  };
-
   componentDidMount = () => {
     const user = sessionStorage.getItem("user");
     if (user) this.userLogin(JSON.parse(user));

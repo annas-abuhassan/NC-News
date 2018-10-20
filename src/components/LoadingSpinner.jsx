@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { css } from "react-emotion";
 import { ClipLoader } from "react-spinners";
 
@@ -7,14 +7,11 @@ const override = css`
   margin: 0 auto;
   border-color: red;
 `;
-class LoadingSpinner extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
-  
+class LoadingSpinner extends Component {
+  state = {
+    loading: true
+  };
+
   render() {
     return (
       <div className="sweet-loading">
