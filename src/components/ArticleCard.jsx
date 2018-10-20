@@ -19,6 +19,7 @@ class ArticleCard extends Component {
       created_at,
       _id
     } = this.props.article;
+    
     return (
       <div className="article-card-container">
         <Vote

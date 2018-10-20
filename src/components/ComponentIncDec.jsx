@@ -1,19 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ComponentIncrementer = props => {
-  const { className, amount, updateShowMore } = props;
+const ComponentIncDec = ({ className, amount, updateShowMore }) => {
   return (
     <button className={className} onClick={() => updateShowMore(amount)}>
-      Show More!
+      {amount > 0 ? "Show More" : "Show Less"}
     </button>
   );
 };
 
-ComponentIncrementer.propTypes = {
+ComponentIncDec.propTypes = {
   className: PropTypes.string,
   updateShowMore: PropTypes.func.isRequired,
   amount: PropTypes.number.isRequired
 };
 
-export default ComponentIncrementer;
+export default ComponentIncDec;

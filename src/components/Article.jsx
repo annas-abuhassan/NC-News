@@ -53,6 +53,7 @@ class Article extends Component {
 
   componentDidMount = () => {
     const { id } = this.props;
+
     api
       .getArticleById(id)
       .then(article => {

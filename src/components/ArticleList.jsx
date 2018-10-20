@@ -5,7 +5,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import ScrollButton from "./ScrollButton";
 import "./ArticleList.css";
 import PropTypes from "prop-types";
-import ComponentIncrementer from "./ComponentIncrementer";
+import ComponentIncDec from "./ComponentIncDec";
 import * as api from "../api.js";
 
 class ArticleList extends Component {
@@ -26,9 +26,18 @@ class ArticleList extends Component {
         {showMore + 10 >= articles.length ? (
           <></>
         ) : (
-          <ComponentIncrementer
+          <ComponentIncDec
             className={"article-list-show-more"}
             amount={5}
+            updateShowMore={this.showMore}
+          />
+        )}
+        {showMore - 10 <= -10 ? (
+          <></>
+        ) : (
+          <ComponentIncDec
+            className={"article-list-show-more"}
+            amount={-5}
             updateShowMore={this.showMore}
           />
         )}
@@ -63,9 +72,10 @@ class ArticleList extends Component {
 
   showMore = qty => {
     const newAmount = this.state.showMore + qty;
-    this.setState({
-      showMore: newAmount
-    });
+    if (newAmount !== -5)
+      this.setState({
+        showMore: newAmount
+      });
   };
 }
 

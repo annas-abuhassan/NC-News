@@ -6,8 +6,7 @@ import Article from "./Article";
 import Login from "./Login";
 import Logout from "./Logout";
 import NotFound from "./NotFound";
-
-import ComponentIncrementer from "./ComponentIncrementer";
+import ComponentIncDec from "./ComponentIncDec";
 import * as api from "../api.js";
 import "./Home.css";
 import northcoders_logo from "../assets/northcoders_logo.png";
@@ -53,11 +52,29 @@ class Home extends Component {
               </Link>
             );
           })}
-          <ComponentIncrementer
-            className={"nav-topics-show-more"}
-            amount={3}
-            updateShowMore={this.showMore}
-          />
+          <div>
+            <input />
+          </div>
+          <div>
+            {showMore + 5 >= 15 ? (
+              <></>
+            ) : (
+              <ComponentIncDec
+                className={"article-list-show-more"}
+                amount={5}
+                updateShowMore={this.showMore}
+              />
+            )}
+            {showMore - 5 <= -5 ? (
+              <></>
+            ) : (
+              <ComponentIncDec
+                className={"article-list-show-more"}
+                amount={-5}
+                updateShowMore={this.showMore}
+              />
+            )}
+          </div>
         </nav>
         <main>
           <Router>
