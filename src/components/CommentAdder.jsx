@@ -48,6 +48,7 @@ class CommentAdder extends Component {
 CommentAdder.propTypes = {
   commentCount: PropTypes.number.isRequired,
   user: PropTypes.object,
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  addComment: PropTypes.func.isRequired
 };
 export default CommentAdder;

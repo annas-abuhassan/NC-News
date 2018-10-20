@@ -5,7 +5,7 @@ import Logout from "./Logout";
 import ArticleAdder from "./ArticleAdder";
 
 function LoginSplash(props) {
-  const { user, userLogin, userLogout, addArticle } = props;
+  const { user, userLogin, userLogout } = props;
   return (
     <div className="login-logout">
       {!user.username ? (
@@ -13,11 +13,7 @@ function LoginSplash(props) {
       ) : (
         <Logout className="logout" user={user} userLogout={userLogout} />
       )}
-      {user.username ? (
-        <ArticleAdder addArticle={addArticle} user={user} />
-      ) : (
-        <div />
-      )}
+      {user.username ? <ArticleAdder user={user} /> : <div />}
     </div>
   );
 }
@@ -25,8 +21,7 @@ function LoginSplash(props) {
 LoginSplash.propTypes = {
   user: PropTypes.object.isRequired,
   userLogin: PropTypes.func.isRequired,
-  userLogout: PropTypes.func.isRequired,
-  addArticle: PropTypes.func.isRequired
+  userLogout: PropTypes.func.isRequired
 };
 
 export default LoginSplash;
