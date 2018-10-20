@@ -12,11 +12,11 @@ class ArticleAdder extends Component {
     title: "",
     topic: "",
     body: "",
-    err: true
+    err: { body: true, title: true, topic: true }
   };
 
   render() {
-    const { title, body, topic } = this.state;
+    const { title, body, topic, err } = this.state;
     const {
       user: { _id }
     } = this.props;
@@ -39,8 +39,10 @@ class ArticleAdder extends Component {
                     onChange={this.handleChange}
                     placeholder="Title"
                   />
-                  <p className={title ? "valid-input" : "invalid-input"}>
-                    Titles must be between between 5 and 15 characters!
+                  <p className={!err.title ? "valid-input" : "invalid-input"}>
+                    {title.length
+                      ? "Titles must be between between 5 and 15 characters!"
+                      : ""}
                   </p>
                 </div>
                 <div className="topic-container">
@@ -52,9 +54,10 @@ class ArticleAdder extends Component {
                     onChange={this.handleChange}
                     placeholder="Topic"
                   />
-                  <p className={topic ? "valid-input" : "invalid-input"}>
-                    Topic must be between between 5 and 15 characters, also this
-                    will be converted to kebabCase!
+                  <p className={!err.topic ? "valid-input" : "invalid-input"}>
+                    {topic.length
+                      ? "Topic must be between between 5 and 15 characters, also this will be converted to kebabCase!"
+                      : ""}
                   </p>
                 </div>
                 <div className="body-container">
@@ -65,16 +68,17 @@ class ArticleAdder extends Component {
                     onChange={this.handleChange}
                     placeholder="What are you thinking about?"
                   />
-                  <p className={body ? "valid-input" : "invalid-input"}>
-                    Body must consist of at least 10 characters! Write something
-                    meaningful!
+                  <p className={!err.body ? "valid-input" : "invalid-input"}>
+                    {body.length
+                      ? "Body must consist of at least 10 characters! Write something meaningful!"
+                      : ""}
                   </p>
                 </div>
               </form>
               <div className="actions">
                 <button
                   className="button"
-                  disabled={this.state.err}
+                  disabled={err.body || err.title || err.topic}
                   onClick={() => {
                     const articleObj = { title, created_by: _id, body };
                     api
@@ -108,20 +112,13 @@ class ArticleAdder extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    const { body, title, topic } = this.state;
-    if (utils.checkValidity(name, value)) {
-      this.setState({ [name]: value }, () => {
-        if (body && title && topic)
-          this.setState({
-            err: false
-          });
-      });
-    } else {
-      this.setState({
-        [name]: "",
-        err: true
-      });
-    }
+    this.setState({
+      [name]: value,
+      err: {
+        ...this.state.err,
+        [name]: utils.checkValidity(name, value) ? false : true
+      }
+    });
   };
 }
 
