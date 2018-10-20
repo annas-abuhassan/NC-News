@@ -17,10 +17,6 @@ class ArticleAdder extends Component {
 
   render() {
     const { title, body, topic, err } = this.state;
-    const {
-      user: { _id }
-    } = this.props;
-
     return (
       <div>
         <Popup
@@ -78,16 +74,8 @@ class ArticleAdder extends Component {
                   className="button"
                   disabled={err.body || err.title || err.topic}
                   onClick={() => {
-                    const articleObj = { title, created_by: _id, body };
-                    api
-                      .addArticle(articleObj, kebabCase(topic))
-                      .then(article => {
-                        this.setState({ body: "", title: "", topic: "" });
-                        close();
-                        navigate(`/articles/${article._id}`, {
-                          state: { article }
-                        });
-                      });
+                    this.addArticle();
+                    close();
                   }}
                 >
                   Submit!
@@ -107,6 +95,22 @@ class ArticleAdder extends Component {
       </div>
     );
   }
+
+  addArticle = () => {
+    const { title, body, topic } = this.state;
+    const {
+      user: { _id }
+    } = this.props;
+
+    const articleObj = { title, created_by: _id, body };
+
+    api.addArticle(articleObj, kebabCase(topic)).then(article => {
+      this.setState({ body: "", title: "", topic: "" });
+      navigate(`/articles/${article._id}`, {
+        state: { article }
+      });
+    });
+  };
 
   handleChange = event => {
     const { name, value } = event.target;
