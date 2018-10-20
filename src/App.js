@@ -5,19 +5,16 @@ import { Link, Router } from "@reach/router";
 import ArticleList from "./components/ArticleList";
 import Article from "./components/Article";
 import NotFound from "./components/NotFound";
-import ComponentIncDec from "./components/ComponentIncDec";
-import * as api from "./api.js";
+import NavBar from "./components/NavBar";
 import northcoders_logo from "./assets/northcoders_logo.png";
 
 class App extends Component {
   state = {
-    topics: [],
-    showMore: 0,
     user: {}
   };
 
   render() {
-    const { user, topics, showMore } = this.state;
+    const { user } = this.state;
     return (
       <div className="container">
         <header>
@@ -33,36 +30,7 @@ class App extends Component {
           </Link>
         </header>
         <nav className="nav-container">
-          {topics.slice(0, 5 + showMore).map(({ slug, _id }) => {
-            return (
-              <Link className="nav-link" key={_id} to={`/topics/${slug}`}>
-                {`nc/${slug}`}
-              </Link>
-            );
-          })}
-          <div>
-            <input />
-          </div>
-          <div>
-            {showMore + 5 >= 15 ? (
-              <></>
-            ) : (
-              <ComponentIncDec
-                className={"article-list-show-more"}
-                amount={5}
-                updateShowMore={this.showMore}
-              />
-            )}
-            {showMore - 5 <= -5 ? (
-              <></>
-            ) : (
-              <ComponentIncDec
-                className={"article-list-show-more"}
-                amount={-5}
-                updateShowMore={this.showMore}
-              />
-            )}
-          </div>
+          <NavBar />
         </nav>
         <main>
           <Router>
@@ -104,11 +72,6 @@ class App extends Component {
   componentDidMount = () => {
     const user = sessionStorage.getItem("user");
     if (user) this.userLogin(JSON.parse(user));
-    api.getTopics().then(topics =>
-      this.setState({
-        topics
-      })
-    );
   };
 
   userLogin = user => {
