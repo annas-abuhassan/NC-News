@@ -23,9 +23,6 @@ class NavBar extends Component {
           );
         })}
         <div>
-          <input />
-        </div>
-        <div>
           {showMore + 5 >= 15 ? (
             <></>
           ) : (

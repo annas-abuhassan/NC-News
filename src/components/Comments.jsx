@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Vote from "./Vote";
 import moment from "moment";
-import ComponentIncDec from "./ComponentIncDec";
 import CommentAdder from "./CommentAdder";
 import PropTypes from "prop-types";
 import LoadingSpinner from "./LoadingSpinner";
@@ -12,8 +11,7 @@ class Comments extends Component {
   state = {
     comments: [],
     loaded: false,
-    addComments: true,
-    showMore: 0
+    addComments: true
   };
   render() {
     const { comments, loaded, addComments, showMore } = this.state;
@@ -43,32 +41,12 @@ class Comments extends Component {
                 _id={_id}
                 type={"comment"}
               />
-              {user.username === username ? (
+              {user.username === username && (
                 <button onClick={() => this.deleteComment(_id)}>Delete!</button>
-              ) : (
-                <></>
               )}
             </div>
           );
         })}
-        {showMore + 10 >= comments.length ? (
-          <></>
-        ) : (
-          <ComponentIncDec
-            className={"comment-list-show-more"}
-            amount={5}
-            updateShowMore={this.showMore}
-          />
-        )}
-        {showMore - 10 <= -10 ? (
-          <></>
-        ) : (
-          <ComponentIncDec
-            className={"comment-list-show-more"}
-            amount={-5}
-            updateShowMore={this.showMore}
-          />
-        )}
         {addComments ? (
           user.username ? (
             <CommentAdder
@@ -86,14 +64,6 @@ class Comments extends Component {
       </div>
     );
   }
-
-  showMore = qty => {
-    const newAmount = this.state.showMore + qty;
-    if (newAmount !== -5)
-      this.setState({
-        showMore: newAmount
-      });
-  };
 
   deleteComment = id => {
     this.setState({

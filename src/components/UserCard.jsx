@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../api";
 import PropTypes from "prop-types";
+import cooljmessy from "../assets/avatars/cooljmessy.jpg";
 
 class UserCard extends Component {
   state = {
@@ -12,10 +13,11 @@ class UserCard extends Component {
   };
   render() {
     const {
-      user: { _id, username, avatar_url, articles, comments }
+      user: { _id, username, articles, comments, avatar_url }
     } = this.state;
+    const { className } = this.props;
     return (
-      <div className="user-card">
+      <div className={className}>
         <h1>
           Username:{" "}
           <Link state={this.state.user} to={`/users/${_id}`}>
@@ -23,12 +25,7 @@ class UserCard extends Component {
           </Link>
         </h1>
         <div>
-          <img
-            src={
-              "https://vignette1.wikia.nocookie.net/mrmen/images/7/7f/Mr_Happy.jpg/revision/latest?cb=20140102171729"
-            }
-            alt="avatar"
-          />
+          <img src={avatar_url} alt="avatar" />
         </div>
         <div>Articles: {articles.length}</div>
         <div>Comments: {comments.length}</div>
@@ -45,5 +42,7 @@ class UserCard extends Component {
   };
 }
 
-UserCard.propTypes = {};
+UserCard.propTypes = {
+  className: PropTypes.string.isRequired
+};
 export default UserCard;

@@ -11,7 +11,9 @@ class UserList extends Component {
     return (
       <div>
         {users.map(user => {
-          return <Usercard key={user._id} user={user} />;
+          return (
+            <Usercard className={"user-card"} key={user._id} user={user} />
+          );
         })}
       </div>
     );
