@@ -3,7 +3,6 @@ import ComponentIncDec from "./ComponentIncDec";
 import { Link } from "@reach/router";
 import * as api from "../api";
 
-
 class NavBar extends Component {
   state = {
     topics: [],
@@ -13,6 +12,9 @@ class NavBar extends Component {
     const { topics, showMore } = this.state;
     return (
       <div>
+        <Link className="nav-link" to="/users">
+          Users
+        </Link>
         {topics.slice(0, 5 + showMore).map(({ slug, _id }) => {
           return (
             <Link className="nav-link" key={_id} to={`/topics/${slug}`}>

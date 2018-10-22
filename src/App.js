@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import LoginSplash from "./components/LoginSplash";
 import { Link, Router } from "@reach/router";
+import User from "./components/User";
+import UserList from "./components/UserList";
 import ArticleList from "./components/ArticleList";
 import Article from "./components/Article";
 import NotFound from "./components/NotFound";
@@ -37,6 +39,8 @@ class App extends Component {
             <ArticleList path="/" />
             <ArticleList path="/topics/:topic" />
             <Article user={user} path="/articles/:id" />
+            <User path="/users/:id" />
+            <UserList path="/users" />
             <NotFound path="/error" />
             <NotFound path="/*" />
           </Router>

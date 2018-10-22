@@ -23,6 +23,20 @@ export const getTopics = () => {
   return axios.get(`${API_URL}/topics`).then(({ data }) => data.topics);
 };
 
+export const getUser = username => {
+  return axios
+    .get(`${API_URL}/users/${username}`)
+    .then(({ data }) => data.user);
+};
+
+export const getUsers = () => {
+  return axios.get(`${API_URL}/users`).then(({ data }) => data.users);
+};
+
+export const getUserById = _id => {
+  return axios.get(`${API_URL}/users/${_id}`).then(({ data }) => data.user);
+};
+
 export const makeVote = (updown, id, type) => {
   return axios
     .patch(`${API_URL}/${type}s/${id}?votes=${updown}`)
@@ -33,12 +47,6 @@ export const addComment = (commentObj, id) => {
   return axios
     .post(`${API_URL}/articles/${id}/comments`, commentObj)
     .then(({ data }) => data.comment);
-};
-
-export const getUser = username => {
-  return axios
-    .get(`${API_URL}/users/${username}`)
-    .then(({ data }) => data.user);
 };
 
 export const deleteComment = id => {
