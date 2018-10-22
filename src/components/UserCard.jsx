@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../api";
 import PropTypes from "prop-types";
-import cooljmessy from "../assets/avatars/cooljmessy.jpg";
+import image404 from "../assets/image404.png";
 
 class UserCard extends Component {
   state = {
@@ -25,13 +25,17 @@ class UserCard extends Component {
           </Link>
         </h1>
         <div>
-          <img src={avatar_url} alt="avatar" />
+          <img onError={this.addDefaultSrc} src={avatar_url} alt="avatar" />
         </div>
         <div>Articles: {articles.length}</div>
         <div>Comments: {comments.length}</div>
       </div>
     );
   }
+
+  addDefaultSrc = event => {
+    event.target.src = image404;
+  };
 
   componentDidMount = () => {
     this.getUserActivity(this.props.user._id);

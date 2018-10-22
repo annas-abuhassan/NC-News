@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import ArticleList from "./ArticleList";
-import Comments from "./Comments";
 import Usercard from "./UserCard";
-import "./User.css";
-import "./Comments.css";
 
 class User extends Component {
   state = {
