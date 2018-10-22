@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Vote from "./Vote";
 import moment from "moment";
+import ComponentIncDec from "./ComponentIncDec";
 import CommentAdder from "./CommentAdder";
 import PropTypes from "prop-types";
 import LoadingSpinner from "./LoadingSpinner";
@@ -11,17 +12,18 @@ class Comments extends Component {
   state = {
     comments: [],
     loaded: false,
-    addComments: true
+    addComments: true,
+    showMore: 0
   };
   render() {
-    const { comments, loaded, addComments } = this.state;
+    const { comments, loaded, addComments, showMore } = this.state;
     const { user } = this.props;
 
     return !loaded ? (
       <LoadingSpinner />
     ) : (
       <div className="comment-list-container">
-        {comments.map(comment => {
+        {comments.slice(0, 10 + showMore).map(comment => {
           const {
             _id,
             body,
@@ -49,6 +51,24 @@ class Comments extends Component {
             </div>
           );
         })}
+        {showMore + 10 >= comments.length ? (
+          <></>
+        ) : (
+          <ComponentIncDec
+            className={"comment-list-show-more"}
+            amount={5}
+            updateShowMore={this.showMore}
+          />
+        )}
+        {showMore - 10 <= -10 ? (
+          <></>
+        ) : (
+          <ComponentIncDec
+            className={"comment-list-show-more"}
+            amount={-5}
+            updateShowMore={this.showMore}
+          />
+        )}
         {addComments ? (
           user.username ? (
             <CommentAdder
@@ -66,6 +86,14 @@ class Comments extends Component {
       </div>
     );
   }
+
+  showMore = qty => {
+    const newAmount = this.state.showMore + qty;
+    if (newAmount !== -5)
+      this.setState({
+        showMore: newAmount
+      });
+  };
 
   deleteComment = id => {
     this.setState({
