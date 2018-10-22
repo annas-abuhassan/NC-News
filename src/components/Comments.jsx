@@ -133,7 +133,7 @@ class Comments extends Component {
   };
 }
 Comments.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   user: PropTypes.object.isRequired
 };
 export default Comments;

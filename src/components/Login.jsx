@@ -26,7 +26,7 @@ class Login extends Component {
     api
       .getUsers(this.state.username)
       .then(user => {
-        if (!user.length) throw "error";
+        if (!user.length) throw { status: 404, msg: "Invalid user" };
         userLogin(user[0]);
       })
       .catch(err =>
