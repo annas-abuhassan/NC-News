@@ -66,8 +66,8 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    const user = sessionStorage.getItem("user");
-    if (user) this.userLogin(JSON.parse(user));
+    // const user = sessionStorage.getItem("user");
+    // if (user) this.userLogin(JSON.parse(user));
   };
 
   userLogin = user => {

@@ -23,14 +23,16 @@ export const getTopics = () => {
   return axios.get(`${API_URL}/topics`).then(({ data }) => data.topics);
 };
 
-export const getUser = username => {
-  return axios
-    .get(`${API_URL}/users/${username}`)
-    .then(({ data }) => data.user);
-};
-
-export const getUsers = () => {
-  return axios.get(`${API_URL}/users`).then(({ data }) => data.users);
+export const getUsers = username => {
+  if (!username) {
+    return axios.get(`${API_URL}/users`).then(({ data }) => data.users);
+  } else {
+    return axios
+      .get(`${API_URL}/users`)
+      .then(({ data }) =>
+        data.users.filter(user => user.username === username)
+      );
+  }
 };
 
 export const getUserById = _id => {

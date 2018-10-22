@@ -57,17 +57,19 @@ class ArticleList extends Component {
   };
 
   fetchArticles = () => {
-    const { topic } = this.props;
-    api.getArticles(topic).then(articles => {
-      articles.length
-        ? this.setState({
-            articles
-          })
-        : navigate("/error", {
-            replace: true,
-            state: { message: "Topic does not exist!", from: "/topics" }
-          });
-    });
+    const { topic, articles } = this.props;
+    if (!articles) {
+      api.getArticles(topic).then(articles => {
+        articles.length
+          ? this.setState({
+              articles
+            })
+          : navigate("/error", {
+              replace: true,
+              state: { message: "Topic does not exist!", from: "/topics" }
+            });
+      });
+    } else this.setState({ articles });
   };
 
   showMore = qty => {

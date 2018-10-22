@@ -17,7 +17,10 @@ class UserCard extends Component {
     return (
       <div className="user-card">
         <h1>
-          Username: <Link to={`/users/${_id}`}>{username}</Link>
+          Username:{" "}
+          <Link state={this.state.user} to={`/users/${_id}`}>
+            {username}
+          </Link>
         </h1>
         <div>
           <img

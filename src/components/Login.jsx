@@ -24,8 +24,10 @@ class Login extends Component {
     const { userLogin } = this.props;
     event.preventDefault();
     api
-      .getUser(this.state.username)
-      .then(user => userLogin(user))
+      .getUsers(this.state.username)
+      .then(user => {
+        userLogin(user[0]);
+      })
       .catch(err =>
         this.setState({
           err
