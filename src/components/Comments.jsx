@@ -10,10 +10,11 @@ import "./Comments.css";
 class Comments extends Component {
   state = {
     comments: [],
-    loaded: false
+    loaded: false,
+    addComments: true
   };
   render() {
-    const { comments, loaded } = this.state;
+    const { comments, loaded, addComments } = this.state;
     const { user } = this.props;
 
     return !loaded ? (
@@ -48,15 +49,19 @@ class Comments extends Component {
             </div>
           );
         })}
-        {user.username ? (
-          <CommentAdder
-            commentCount={comments.length}
-            addComment={this.addComment}
-            className="comment-adder-container"
-            user={user}
-          />
+        {addComments ? (
+          user.username ? (
+            <CommentAdder
+              commentCount={comments.length}
+              addComment={this.addComment}
+              className="comment-adder-container"
+              user={user}
+            />
+          ) : (
+            <h1>Login to add a comment!</h1>
+          )
         ) : (
-          <h1>Login to add a comment!</h1>
+          <></>
         )}
       </div>
     );
@@ -102,20 +107,29 @@ class Comments extends Component {
   };
 
   fetchComments = id => {
-    api
-      .getArticleCommentsById(id)
-      .then(comments => {
-        this.setState({
-          comments,
-          loaded: true
+    const { comments } = this.props;
+    if (!comments) {
+      api
+        .getArticleCommentsById(id)
+        .then(comments => {
+          this.setState({
+            comments,
+            loaded: true
+          });
+        })
+        .catch(err => {
+          this.setState({
+            comments: [],
+            loaded: true
+          });
         });
-      })
-      .catch(err => {
-        this.setState({
-          comments: [],
-          loaded: true
-        });
+    } else {
+      this.setState({
+        comments,
+        loaded: true,
+        addComments: false
       });
+    }
   };
 }
 Comments.propTypes = {
