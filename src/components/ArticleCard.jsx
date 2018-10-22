@@ -19,7 +19,7 @@ class ArticleCard extends Component {
       created_at,
       _id
     } = this.props.article;
-    
+
     return (
       <div className="article-card-container">
         <Vote
@@ -34,7 +34,12 @@ class ArticleCard extends Component {
               <span>{`nc/${belongs_to}`}</span>
             </Link>
             <span className="article-card-user">
-              {`Posted By: ${created_by.username}`}
+              Posted By:{" "}
+              {
+                <Link className="article-card-user" to={"/users"}>
+                  {created_by.username}
+                </Link>
+              }
             </span>
             <span className="article-card-time">
               {moment(created_at).fromNow()}

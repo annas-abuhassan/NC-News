@@ -24,7 +24,7 @@ class NavBar extends Component {
         })}
         <div>
           {showMore + 5 <= 15 &&
-            showMore + 5 <= topics.length && (
+            showMore + 5 < topics.length && (
               <ComponentIncDec
                 className={"article-list-show-more"}
                 amount={5}
@@ -45,7 +45,6 @@ class NavBar extends Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps !== this.props) {
-      console.log("getting topics");
       api.getTopics().then(topics =>
         this.setState({
           topics

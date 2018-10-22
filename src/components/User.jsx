@@ -26,6 +26,10 @@ class User extends Component {
     );
   }
 
+  componentDidMount = () => {
+    console.log("HIYA");
+  };
+  
   showList = event => {
     const { name } = event.target;
     this.setState({

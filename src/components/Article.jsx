@@ -33,8 +33,13 @@ class Article extends Component {
               <Link className="article-main-topic" to={`/topics/${belongs_to}`}>
                 <span>{`nc/${belongs_to}`}</span>
               </Link>
-              <span className="article-main-user">
-                Posted By: {`${created_by.username}`}
+              <span>
+                Posted By:{" "}
+                {
+                  <Link className="article-main-user" to={"/users"}>
+                    {created_by.username}
+                  </Link>
+                }
               </span>
               <span className="article-main-time">
                 {moment(created_at).fromNow()}
@@ -60,7 +65,6 @@ class Article extends Component {
         this.setState({ article });
       })
       .catch(err => {
-        console.log(err);
         navigate("/error", {
           replace: true,
           state: {
@@ -74,13 +78,20 @@ class Article extends Component {
 
   componentDidUpdate = prevProps => {
     const { id } = this.props;
-    if (this.props.location.state.article && prevProps !== this.props) {
-      api
-        .getArticleById(id)
-        .then(article => {
-          this.setState({ article });
-        })
-        .catch(err => console.log(err));
+
+    if (this.props !== prevProps) {
+      if (
+        this.props.location.state &&
+        this.props.location.state.article &&
+        prevProps._id !== this.props._id
+      ) {
+        api
+          .getArticleById(id)
+          .then(article => {
+            this.setState({ article });
+          })
+          .catch(err => console.log(err));
+      }
     }
   };
 }

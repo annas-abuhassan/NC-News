@@ -19,6 +19,7 @@
 }
 
 .article-main-details {
+  opacity: 0.8;
   margin: 2px;
 }
 .article-main-title {
@@ -35,10 +36,16 @@
 }
 
 .article-main-user {
-  opacity: 0.8;
   margin: 5px;
+  color: #202829;
   grid-area: user;
 }
+
+.article-main-user:hover {
+  grid-area: user;
+  color: white;
+}
+
 .article-main-time {
   opacity: 0.8;
   margin: 5px;

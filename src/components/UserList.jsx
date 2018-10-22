@@ -9,7 +9,7 @@ class UserList extends Component {
   render() {
     const { users } = this.state;
     return (
-      <div>
+      <div className="user-container">
         {users.map(user => {
           return (
             <Usercard className={"user-card"} key={user._id} user={user} />

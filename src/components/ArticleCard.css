@@ -35,6 +35,14 @@
   color: #ba1f31;
 }
 
+.article-card-container:hover .article-card-user,
+.article-card-container:focus .article-card-user,
+.article-card-container:active .article-card-user {
+  transform: scale(1.008);
+  background-color: white;
+  color: #ba1f31;
+}
+
 .article-card-container {
   color: white;
   max-width: 1240px;
@@ -91,6 +99,7 @@
 .article-card-user {
   margin: 5px;
   grid-area: user;
+  color: white;
 }
 .article-card-time {
   margin: 5px;

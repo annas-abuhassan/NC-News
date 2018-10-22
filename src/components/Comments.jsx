@@ -21,7 +21,7 @@ class Comments extends Component {
       <LoadingSpinner />
     ) : (
       <div className="comment-list-container">
-        {comments.slice(0, 10 + showMore).map(comment => {
+        {comments.map(comment => {
           const {
             _id,
             body,
@@ -110,6 +110,7 @@ class Comments extends Component {
       api
         .getArticleCommentsById(id)
         .then(comments => {
+          console.log(comments);
           this.setState({
             comments,
             loaded: true
