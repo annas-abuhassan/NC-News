@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import ArticleCard from "./ArticleCard";
-import LoadingSpinner from "./LoadingSpinner";
-import ScrollButton from "./ScrollButton";
-import "./ArticleList.css";
-import PropTypes from "prop-types";
-import ComponentIncDec from "./ComponentIncDec";
-import * as api from "../api.js";
+import React, { Component } from 'react';
+import { navigate } from '@reach/router';
+import ArticleCard from './ArticleCard';
+import LoadingSpinner from './LoadingSpinner';
+import ScrollButton from './ScrollButton';
+import './ArticleList.css';
+import PropTypes from 'prop-types';
+import ComponentIncDec from './ComponentIncDec';
+import * as api from '../api.js';
 
 class ArticleList extends Component {
   state = {
@@ -20,6 +20,15 @@ class ArticleList extends Component {
       <LoadingSpinner />
     ) : (
       <div className="article-list-container">
+        <div>
+          Sort By :{' '}
+          <button onClick={() => this.sortArticles('recent')}>
+            Most Recent
+          </button>{' '}
+          <button onClick={() => this.sortArticles('popular')}>
+            Most Popular
+          </button>
+        </div>
         {articles.slice(0, 10 + showMore).map(article => {
           return <ArticleCard key={article._id} article={article} />;
         })}
@@ -27,7 +36,7 @@ class ArticleList extends Component {
           <></>
         ) : (
           <ComponentIncDec
-            className={"article-list-show-more"}
+            className={'article-list-show-more'}
             amount={5}
             updateShowMore={this.showMore}
           />
@@ -36,7 +45,7 @@ class ArticleList extends Component {
           <></>
         ) : (
           <ComponentIncDec
-            className={"article-list-show-more"}
+            className={'article-list-show-more'}
             amount={-5}
             updateShowMore={this.showMore}
           />
@@ -64,12 +73,27 @@ class ArticleList extends Component {
           ? this.setState({
               articles
             })
-          : navigate("/error", {
+          : navigate('/error', {
               replace: true,
-              state: { message: "Topic does not exist!", from: "/topics" }
+              state: { message: 'Topic does not exist!', from: '/topics' }
             });
       });
     } else this.setState({ articles });
+  };
+
+  sortArticles = sortType => {
+    if (sortType === 'recent') {
+      this.setState({
+        articles: [...this.state.articles].sort(
+          (a, b) => Date.parse(b.created_at) - Date.parse(a.created_at)
+        )
+      });
+    }
+    if (sortType === 'popular') {
+      this.setState({
+        articles: [...this.state.articles].sort((a, b) => b.votes - a.votes)
+      });
+    }
   };
 
   showMore = qty => {
