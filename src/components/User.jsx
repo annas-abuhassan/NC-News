@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ArticleList from "./ArticleList";
-import Usercard from "./UserCard";
+import React, { Component } from 'react';
+import ArticleList from './ArticleList';
+import Usercard from './UserCard';
 
 class User extends Component {
   state = {
@@ -11,14 +11,14 @@ class User extends Component {
     return (
       <div className="user-container">
         <div>
-          {" "}
-          <Usercard className={"user-card"} user={this.props.location.state} />
+          {' '}
+          <Usercard className={'user-card'} user={this.props.location.state} />
           <button
             value={this.state.articles}
             name="articles"
             onClick={this.showList}
           >
-            {!this.state.articles ? "Show Articles" : "Hide Articles"}
+            {!this.state.articles ? 'Show Articles' : 'Hide Articles'}
           </button>
         </div>
         <div>{this.state.articles && <ArticleList articles={articles} />}</div>
@@ -27,7 +27,7 @@ class User extends Component {
   }
 
   componentDidMount = () => {
-    console.log("HIYA");
+    console.log('HIYA');
   };
 
   showList = event => {

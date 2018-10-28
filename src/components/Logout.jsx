@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import './Logout.css';
 
 function Logout(props) {
   const { user, userLogout, className } = props;

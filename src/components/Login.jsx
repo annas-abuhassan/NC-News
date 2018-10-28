@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import "./Login.css";
-import * as api from "../api.js";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './Login.css';
+import * as api from '../api.js';
 
 class Login extends Component {
   state = {
-    username: "tickle122",
+    username: 'tickle122',
     err: null
   };
 
@@ -14,6 +14,7 @@ class Login extends Component {
       <form onSubmit={this.handleSubmit}>
         <label>Username:</label>
         <input
+          className="login-input"
           value={this.state.username}
           label="login"
           onChange={this.handleChange}
@@ -31,7 +32,7 @@ class Login extends Component {
     api
       .getUsers(this.state.username)
       .then(user => {
-        if (!user.length) throw { status: 404, msg: "Invalid user" };
+        if (!user.length) throw { status: 404, msg: 'Invalid user' };
         userLogin(user[0]);
       })
       .catch(err =>

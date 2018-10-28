@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { navigate } from "@reach/router";
-import Popup from "reactjs-popup";
-import PropTypes from "prop-types";
-import "./ArticleAdder.css";
-import * as api from "../api.js";
-import * as utils from "./utils/index.js";
-import kebabCase from "lodash/kebabCase";
+import React, { Component } from 'react';
+import { navigate } from '@reach/router';
+import Popup from 'reactjs-popup';
+import PropTypes from 'prop-types';
+import './ArticleAdder.css';
+import * as api from '../api.js';
+import * as utils from './utils/index.js';
+import kebabCase from 'lodash/kebabCase';
 
 class ArticleAdder extends Component {
   state = {
-    title: "",
-    topic: "",
-    body: "",
+    title: '',
+    topic: '',
+    body: '',
     err: { body: true, title: true, topic: true }
   };
 
   render() {
     const { title, body, topic, err } = this.state;
     return (
-      <div>
+      <div className="article-adder-container">
         <Popup
           trigger={<button className="button">Add a new article!</button>}
           modal
@@ -34,10 +34,10 @@ class ArticleAdder extends Component {
                   onChange={this.handleChange}
                   placeholder="Title"
                 />
-                <p className={!err.title ? "valid-input" : "invalid-input"}>
+                <p className={!err.title ? 'valid-input' : 'invalid-input'}>
                   {title.length
-                    ? "Titles must be between between 5 and 15 characters!"
-                    : ""}
+                    ? 'Titles must be between between 5 and 15 characters!'
+                    : ''}
                 </p>
               </div>
               <div className="topic-container">
@@ -49,10 +49,10 @@ class ArticleAdder extends Component {
                   onChange={this.handleChange}
                   placeholder="Topic"
                 />
-                <p className={!err.topic ? "valid-input" : "invalid-input"}>
+                <p className={!err.topic ? 'valid-input' : 'invalid-input'}>
                   {topic.length
-                    ? "Topic must be between between 5 and 15 characters, also this will be converted to kebabCase!"
-                    : ""}
+                    ? 'Topic must be between between 5 and 15 characters, also this will be converted to kebabCase!'
+                    : ''}
                 </p>
               </div>
               <div className="body-container">
@@ -63,10 +63,10 @@ class ArticleAdder extends Component {
                   onChange={this.handleChange}
                   placeholder="What are you thinking about?"
                 />
-                <p className={!err.body ? "valid-input" : "invalid-input"}>
+                <p className={!err.body ? 'valid-input' : 'invalid-input'}>
                   {body.length
-                    ? "Body must consist of at least 10 characters! Write something meaningful!"
-                    : ""}
+                    ? 'Body must consist of at least 10 characters! Write something meaningful!'
+                    : ''}
                 </p>
               </div>
               <div className="actions">
@@ -105,7 +105,7 @@ class ArticleAdder extends Component {
     const articleObj = { title, created_by: _id, body };
 
     api.addArticle(articleObj, kebabCase(topic)).then(article => {
-      this.setState({ body: "", title: "", topic: "" });
+      this.setState({ body: '', title: '', topic: '' });
       navigate(`/articles/${article._id}`, {
         state: { article }
       });

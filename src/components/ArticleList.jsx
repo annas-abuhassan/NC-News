@@ -20,7 +20,7 @@ class ArticleList extends Component {
       <LoadingSpinner />
     ) : (
       <div className="article-list-container">
-        <div>
+        <div className="sort-options">
           Sort By :{' '}
           <button onClick={() => this.sortArticles('recent')}>
             Most Recent
