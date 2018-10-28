@@ -14,8 +14,9 @@ class Comments extends Component {
     addComments: true
   };
   render() {
-    const { comments, loaded, addComments, showMore } = this.state;
+    const { comments, loaded, addComments } = this.state;
     const { user } = this.props;
+    console.log(user);
 
     return !loaded ? (
       <LoadingSpinner />
@@ -36,6 +37,7 @@ class Comments extends Component {
               </div>
               <span className="comment-body">{body}</span>
               <Vote
+                user={user}
                 className="comment-votes"
                 votes={votes}
                 _id={_id}
@@ -110,7 +112,6 @@ class Comments extends Component {
       api
         .getArticleCommentsById(id)
         .then(comments => {
-          console.log(comments);
           this.setState({
             comments,
             loaded: true

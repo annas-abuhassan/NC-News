@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import "./App.css";
-import LoginSplash from "./components/LoginSplash";
-import { Link, Router } from "@reach/router";
-import User from "./components/User";
-import UserList from "./components/UserList";
-import ArticleList from "./components/ArticleList";
-import Article from "./components/Article";
-import NotFound from "./components/NotFound";
-import NavBar from "./components/NavBar";
-import northcoders_logo from "./assets/northcoders_logo.png";
+import React, { Component } from 'react';
+import './App.css';
+import LoginSplash from './components/LoginSplash';
+import { Link, Router } from '@reach/router';
+import User from './components/User';
+import UserList from './components/UserList';
+import ArticleList from './components/ArticleList';
+import Article from './components/Article';
+import NotFound from './components/NotFound';
+import NavBar from './components/NavBar';
+import northcoders_logo from './assets/northcoders_logo.png';
 
 class App extends Component {
   state = {
-    user: {}
+    user: { username: '' }
   };
 
   render() {
@@ -39,7 +39,7 @@ class App extends Component {
             <ArticleList path="/" />
             <ArticleList path="/topics/:topic" />
             <Article user={user} path="/articles/:id" />
-            <User path="/users/:id" />
+            <User className={'user-card'} path="/users/:id" />
             <UserList path="/users" />
             <NotFound path="/error" />
             <NotFound path="/*" />
@@ -66,19 +66,19 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    const user = sessionStorage.getItem("user");
+    const user = sessionStorage.getItem('user');
     if (user) this.userLogin(JSON.parse(user));
   };
 
   userLogin = user => {
-    sessionStorage.setItem("user", JSON.stringify(user));
+    sessionStorage.setItem('user', JSON.stringify(user));
     this.setState({
       user
     });
   };
 
   userLogout = () => {
-    sessionStorage.removeItem("user");
+    sessionStorage.removeItem('user');
     this.setState({
       user: {}
     });

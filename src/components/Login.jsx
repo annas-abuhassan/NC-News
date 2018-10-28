@@ -5,7 +5,7 @@ import * as api from "../api.js";
 
 class Login extends Component {
   state = {
-    username: "",
+    username: "tickle122",
     err: null
   };
 
@@ -13,7 +13,12 @@ class Login extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>Username:</label>
-        <input label="login" onChange={this.handleChange} type="text" />
+        <input
+          value={this.state.username}
+          label="login"
+          onChange={this.handleChange}
+          type="text"
+        />
         <button className="login-button">Login!</button>
         {this.state.err ? <p>User does not exist!</p> : <></>}
       </form>

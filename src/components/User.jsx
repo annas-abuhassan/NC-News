@@ -4,7 +4,7 @@ import Usercard from "./UserCard";
 
 class User extends Component {
   state = {
-    articles: false
+    articles: true
   };
   render() {
     const { articles } = this.props.location.state;
@@ -12,7 +12,7 @@ class User extends Component {
       <div className="user-container">
         <div>
           {" "}
-          <Usercard user={this.props.location.state} />
+          <Usercard className={"user-card"} user={this.props.location.state} />
           <button
             value={this.state.articles}
             name="articles"
@@ -29,7 +29,7 @@ class User extends Component {
   componentDidMount = () => {
     console.log("HIYA");
   };
-  
+
   showList = event => {
     const { name } = event.target;
     this.setState({

@@ -17,6 +17,7 @@ class Article extends Component {
       article: { title, body, created_at, created_by, belongs_to, _id, votes }
     } = this.state;
     const { id, user } = this.props;
+    console.log(user);
     return !created_by ? (
       <LoadingSpinner />
     ) : (

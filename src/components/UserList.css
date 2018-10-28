@@ -1,0 +1,27 @@
+.user-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.user-card img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.details {
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
+.username {
+  /* text-decoration: none; */
+  color: white;
+}
+
+.username:hover {
+  opacity: 0.5;
+}

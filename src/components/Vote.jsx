@@ -8,7 +8,7 @@ class Vote extends Component {
   };
 
   render() {
-    const { votes, _id, type, className } = this.props;
+    const { votes, _id, type, className, user } = this.props;
     const { voteModifier } = this.state;
     const { handleVote } = this;
 
@@ -37,9 +37,9 @@ class Vote extends Component {
 
   handleVote = (updown, _id, type) => {
     api.makeVote(updown, _id, type);
-    this.setState(state => ({
+    this.setState({
       voteModifier: updown === "up" ? 1 : -1
-    }));
+    });
   };
 }
 

@@ -19,16 +19,21 @@ class UserCard extends Component {
     return (
       <div className={className}>
         <h1>
-          Username:{" "}
-          <Link state={this.state.user} to={`/users/${_id}`}>
+          <Link
+            className="username"
+            state={this.state.user}
+            to={`/users/${_id}`}
+          >
             {username}
           </Link>
         </h1>
         <div>
           <img onError={this.addDefaultSrc} src={avatar_url} alt="avatar" />
         </div>
-        <div>Articles: {articles.length}</div>
-        <div>Comments: {comments.length}</div>
+        <div className="details">
+          <div>Articles: {articles.length}</div>
+          <div>Comments: {comments.length}</div>
+        </div>
       </div>
     );
   }

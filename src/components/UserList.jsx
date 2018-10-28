@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Usercard from "./UserCard";
 import * as api from "../api";
+import "./UserList.css";
 
 class UserList extends Component {
   state = {
