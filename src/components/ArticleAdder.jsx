@@ -16,11 +16,18 @@ class ArticleAdder extends Component {
   };
 
   render() {
+    const { user } = this.props;
     const { title, body, topic, err } = this.state;
     return (
       <div className="article-adder-container">
         <Popup
-          trigger={<button className="button">Add a new article!</button>}
+          trigger={
+            <button className="button">
+              {user.username
+                ? 'Add a new article!'
+                : 'Login to add an article!'}
+            </button>
+          }
           modal
         >
           {close => (

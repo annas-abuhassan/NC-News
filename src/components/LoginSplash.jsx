@@ -15,10 +15,12 @@ function LoginSplash(props) {
       ) : (
         <Logout user={user} userLogout={userLogout} />
       )}
-      {user.username ? <ArticleAdder user={user} /> : <div />}
-      <Link className="nav-link" to="/users">
-        User List
-      </Link>
+      {<ArticleAdder user={user} />}
+      <div className="user-list">
+        <Link className="nav-link" to="/users">
+          User List
+        </Link>
+      </div>
     </div>
   );
 }

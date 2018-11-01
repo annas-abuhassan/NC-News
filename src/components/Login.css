@@ -3,6 +3,9 @@
   src: url('../assets/fonts/GothamBoldRegular.ttf') format('truetype');
 }
 
+.form {
+  margin: 10px;
+}
 .login-input {
   margin: 10px;
 }

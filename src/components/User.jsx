@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ArticleList from './ArticleList';
 import Usercard from './UserCard';
+import './User.css';
 
 class User extends Component {
   state = {
@@ -21,7 +22,9 @@ class User extends Component {
             {!this.state.articles ? 'Show Articles' : 'Hide Articles'}
           </button>
         </div>
-        <div>{this.state.articles && <ArticleList articles={articles} />}</div>
+        <div className="article-list">
+          {this.state.articles && <ArticleList articles={articles} />}
+        </div>
       </div>
     );
   }

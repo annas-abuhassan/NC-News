@@ -1,17 +1,16 @@
 .article-main-container {
   color: white;
   max-width: 1240px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
 .article-main-main {
   text-align: left;
   border: 2px solid black;
   display: grid;
-
   grid-template-columns: 0.25fr 4fr;
   grid-template-rows: 1fr 1fr 100%;
-  grid-template-areas: "votes topic user time" "votes title title title" "votes body body body";
+  grid-template-areas: 'votes topic user time' 'votes title title title' 'votes body body body';
 }
 
 .article-main-comments {

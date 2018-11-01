@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import moment from "moment";
-import LoadingSpinner from "./LoadingSpinner";
-import { Link, navigate } from "@reach/router";
-import Comments from "./Comments";
-import Vote from "./Vote";
-import PropTypes from "prop-types";
-import "./Article.css";
-import * as api from "../api.js";
+import React, { Component } from 'react';
+import moment from 'moment';
+import LoadingSpinner from './LoadingSpinner';
+import { Link, navigate } from '@reach/router';
+import Comments from './Comments';
+import Vote from './Vote';
+import PropTypes from 'prop-types';
+import './Article.css';
+import * as api from '../api.js';
 
 class Article extends Component {
   state = {
@@ -17,7 +17,6 @@ class Article extends Component {
       article: { title, body, created_at, created_by, belongs_to, _id, votes }
     } = this.state;
     const { id, user } = this.props;
-    console.log(user);
     return !created_by ? (
       <LoadingSpinner />
     ) : (
@@ -25,19 +24,19 @@ class Article extends Component {
         <div>
           <div className="article-main-main">
             <Vote
-              className={"article-main-votes"}
+              className={'article-main-votes'}
               votes={votes}
               _id={_id}
-              type={"article"}
+              type={'article'}
             />
             <div className="article-main-details">
               <Link className="article-main-topic" to={`/topics/${belongs_to}`}>
                 <span>{`nc/${belongs_to}`}</span>
               </Link>
               <span>
-                Posted By:{" "}
+                Posted By:{' '}
                 {
-                  <Link className="article-main-user" to={"/users"}>
+                  <Link className="article-main-user" to={'/users'}>
                     {created_by.username}
                   </Link>
                 }
@@ -50,7 +49,7 @@ class Article extends Component {
             <p className="article-main-body">{body}</p>
           </div>
           <div className="article-main-comments">
-            <Comments user={user} id={id} />{" "}
+            <Comments user={user} id={id} />{' '}
           </div>
         </div>
       </div>
@@ -66,12 +65,12 @@ class Article extends Component {
         this.setState({ article });
       })
       .catch(err => {
-        navigate("/error", {
+        navigate('/error', {
           replace: true,
           state: {
             code: err.code,
-            message: "This Article ID does not exist!",
-            from: "/articles"
+            message: 'This Article ID does not exist!',
+            from: '/articles'
           }
         });
       });

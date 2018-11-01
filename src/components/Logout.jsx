@@ -2,10 +2,10 @@ import React from 'react';
 import './Logout.css';
 
 function Logout(props) {
-  const { user, userLogout, className } = props;
+  const { user, userLogout } = props;
   return (
-    <div className={className}>
-      Logged in as {user.username}
+    <form className="form">
+      <label>Logged in as: {user.username}</label>
       <button
         className="logout-button"
         onClick={() => {
@@ -14,7 +14,7 @@ function Logout(props) {
       >
         Logout!
       </button>
-    </div>
+    </form>
   );
 }
 
