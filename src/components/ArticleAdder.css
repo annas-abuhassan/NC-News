@@ -1,9 +1,11 @@
 .article-adder-container {
   width: 100%;
 }
+
 .title-container {
   margin: 10px;
 }
+
 .add-article-title {
   width: 100%;
 }
@@ -11,6 +13,7 @@
 .topic-container {
   margin: 10px;
 }
+
 .add-article-topic {
   width: 100%;
 }
@@ -18,10 +21,12 @@
 .body-container {
   margin: 10px;
 }
+
 .add-article-body {
   height: 200px;
   width: 100%;
 }
+
 .button {
   margin: 10px auto;
 }
