@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import ComponentIncDec from "./ComponentIncDec";
-import { Link } from "@reach/router";
-import * as api from "../api";
-
+import React, { Component } from 'react';
+import ComponentIncDec from './ComponentIncDec';
+import { Link } from '@reach/router';
+import * as api from '../api';
+import './NavBar.css';
 class NavBar extends Component {
   state = {
     topics: [],
@@ -11,10 +11,7 @@ class NavBar extends Component {
   render() {
     const { topics, showMore } = this.state;
     return (
-      <div>
-        <Link className="nav-link" to="/users">
-          Users
-        </Link>
+      <div className="nav-bar">
         {topics.slice(0, 5 + showMore).map(({ slug, _id }) => {
           return (
             <Link className="nav-link" key={_id} to={`/topics/${slug}`}>
@@ -26,14 +23,14 @@ class NavBar extends Component {
           {showMore + 5 <= 15 &&
             showMore + 5 < topics.length && (
               <ComponentIncDec
-                className={"article-list-show-more"}
+                className={'article-list-show-more'}
                 amount={5}
                 updateShowMore={this.showMore}
               />
             )}
           {showMore - 5 >= 1 && (
             <ComponentIncDec
-              className={"article-list-show-more"}
+              className={'article-list-show-more'}
               amount={-5}
               updateShowMore={this.showMore}
             />

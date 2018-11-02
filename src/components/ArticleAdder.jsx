@@ -22,7 +22,7 @@ class ArticleAdder extends Component {
       <div className="article-adder-container">
         <Popup
           trigger={
-            <button className="button">
+            <button disabled={user.username ? false : true} className="button">
               {user.username
                 ? 'Add a new article!'
                 : 'Login to add an article!'}

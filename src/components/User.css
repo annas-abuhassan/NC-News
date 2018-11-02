@@ -1,8 +1,5 @@
-.user-container {
-  /* max-width: 1240px; */
-}
-
 .article-list {
   max-width: 1240px;
   width: 1240px;
+  margin: 10px auto;
 }

@@ -3,13 +3,21 @@
   background: #ba1f31;
 }
 
+.top-level {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  margin: 10px;
+}
+.user-list {
+  margin: 10px;
+}
 .container {
   height: 100vh;
   text-align: center;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2fr 1fr 6fr 1fr;
-  grid-template-areas: "header" "nav" "main" "footer";
+  grid-template-areas: 'header' 'nav' 'main' 'footer';
   font-family: Gotham;
 }
 
@@ -37,8 +45,8 @@ header img {
 }
 
 @font-face {
-  font-family: "Gotham";
-  src: url("./assets/fonts/GothamBoldRegular.ttf") format("truetype");
+  font-family: 'Gotham';
+  src: url('./assets/fonts/GothamBoldRegular.ttf') format('truetype');
 }
 
 nav {

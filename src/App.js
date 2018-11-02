@@ -20,12 +20,21 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <LoginSplash
-            user={user}
-            userLogin={this.userLogin}
-            userLogout={this.userLogout}
-            addArticle={this.addArticle}
-          />
+          <div className="top-level">
+            <div className="login-logout">
+              <LoginSplash
+                user={user}
+                userLogin={this.userLogin}
+                userLogout={this.userLogout}
+                addArticle={this.addArticle}
+              />
+            </div>
+            <div className="user-list">
+              <Link className="nav-link" to="/users">
+                User List
+              </Link>
+            </div>
+          </div>
           <img alt="Northcoders Logo" src={northcoders_logo} />
           <Link className="nav-link" to="/">
             <div className="header-tag">NEWS</div>

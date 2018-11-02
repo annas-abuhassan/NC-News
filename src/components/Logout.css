@@ -3,21 +3,14 @@
   src: url('../assets/fonts/GothamBoldRegular.ttf') format('truetype');
 }
 
-.form {
-  margin: 10px;
-}
-
-.logout-input {
-  margin: 10px;
-}
-
-label {
-  color: white;
-  /* background: pink; */
-  margin: 10px;
-}
-
 .logout {
   color: white;
   margin: 10px auto;
+}
+.logout-input {
+  margin: 10px;
+}
+label {
+  color: white;
+  margin: 10px;
 }
